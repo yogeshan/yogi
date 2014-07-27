@@ -1,0 +1,39 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+    <body>
+        <button type="button" class="x" >Click Me</button>
+        <div class="content">Loading</div>
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="500px" height="500px" viewBox="-500 -500 1000 1000">
+        <path id="p1"
+              d="M 100 100 A 200 400 30 1 0 600 200 a 300 100 45 0 1 -300 200"
+              stroke="blue" fill="orange"
+              stroke-width="4" />
+        <animate xlink:href="#p1"
+                 attributeName="d"
+                 attributeType="XML"
+                 from="M 100 100 A 200 400 30 1 0 600 200 a 300 100 45 0 1 -300 200"
+                 to="M 300 600 A 300 400 -20 1 0 400 200 a 200 600 -50 0 1 100 400"
+                 dur="2s"
+                 fill="freeze" />
+
+
+        </svg>
+        <script src="../js/jQuery1.8.3.js"></script>
+        <script >
+            $('.x').click(function(){
+                
+                $(".content").load("../Yogesh_Blue.html",function(){
+                    alert('done');
+                });  
+            });
+        </script>
+    </body>
+</html>

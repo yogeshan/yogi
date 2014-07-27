@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Strooper</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="SHORTCUT ICON" href="../img/favicon.ico"/>
+        <style>
+            @font-face {
+                font-family: '3';
+                src: url('font/1-regular-webfont.woff');
+            } 
+            @font-face {
+                font-family: 'xyz';
+                src: url('font/OogieBoogie.ttf');
+            }
+            html, body { height: 100%;text-rendering: optimizelegibility; }
+            body{
+                font-family: '3';
+                overflow: hidden;
+            }
+
+            .loading{
+                color: white;
+                text-align: center;
+                font-size: 20pt;
+                position: absolute;
+                width: 100%;
+                top: 45%;
+                -webkit-transition: all .3s ease-in;
+                -moz-transition: all 0.3s ease-in;
+                -o-transition: all 0.3s ease-in;
+                transition: all 0.3s ease-in;
+            }
+            .loading-show{
+                display: none;
+            }
+
+            body.active .loading{
+                top:-200px;
+            }
+        </style>
+        <link rel="stylesheet" href="css/button.css" />
+        <link rel="stylesheet" href="css/radio.css" />
+        <link rel="stylesheet" href="js/progress/simple-slider.css" />
+        <link rel="stylesheet" href="js/progress/simple-slider-volume.css" />
+
+        <link rel="stylesheet" href="css/game_2.css" />
+        <link rel="stylesheet" type="text/css" href="css/component.css" />
+        <link rel="stylesheet" type="text/css" href="css/animations.css" />
+        <link rel="stylesheet" type="text/css" href="css/loader.css" />
+        <link rel="stylesheet" href="css/game-loader.css" />
+    </head>
+    <body>
+        <div id="pt-main" class="pt-perspective">
+            <div class="pt-page pt-page-1 pt-page-current ">
+                <div class="loading">
+                    Loading
+                    <div id="fountainG">
+                        <div id="fountainG_1" class="fountainG">
+                        </div>
+                        <div id="fountainG_2" class="fountainG">
+                        </div>
+                        <div id="fountainG_3" class="fountainG">
+                        </div>
+                        <div id="fountainG_4" class="fountainG">
+                        </div>
+                        <div id="fountainG_5" class="fountainG">
+                        </div>
+                        <div id="fountainG_6" class="fountainG">
+                        </div>
+                        <div id="fountainG_7" class="fountainG">
+                        </div>
+                        <div id="fountainG_8" class="fountainG">
+                        </div>
+                    </div>
+                </div>
+                <div class="high-score">
+                    <div class="h3">
+                        <div class="hg-close"><img  src="icons/x-mark-3-48.png" style="width: 16px;"/></div>
+                        High scores
+                    </div>
+                    <div class="hg-row">
+                        <div class="hg-progress">
+                            <div class="hg-value">
+                                <span>0</span>
+                            </div>
+                        </div>
+                        Easy:
+                    </div>
+                    <div class="hg-row">
+                        <div class="hg-progress">
+                            <div class="hg-value">
+                                <span>0</span>
+                            </div>
+                        </div>
+                        Medium:
+                    </div>
+                    <div class="hg-row">
+                        <div class="hg-progress">
+                            <div class="hg-value"> 
+                                <span>0</span>
+                            </div>
+                        </div>
+                        Hard:
+                    </div>
+                    <hr>
+                    <div class="hg-row ">
+                        You have played <span class="naughty">0</span> times
+                    </div>
+                    <hr>
+                    <div class="hg-row best-performer" >
+                        <h4>Best performer</h4>
+                        <div style="text-align: center;margin: 25px 0px 3px 0px;position: relative;">
+                            <img class="best-pic" src="../img/contacts-64.png"/>    
+                        </div>
+                        <span class="best-name">-</span>
+                    </div>
+                    <hr>
+                </div>
+                <div class="loading-show">
+                    <div class="navigator">
+
+                        <a href="../home">
+                            <div class="concon">
+                                <img src="icons/links/home-6-64.png">
+
+                            </div>
+                            <div class="hiden">Home</div>
+                        </a>
+                        <a href="../LoginAction?signout=1">
+                            <div class="concon concon-lg">
+                                <img class="lg" src="icons/links/logout-64.png">
+                            </div>
+                            <div class="hiden hiden-lg">Logout</div>
+                        </a>
+                    </div>
+                    <div class="hg-con" style="display: none;">
+                        <div class="hg-img">
+                            <img src="icons/links/medal-64.png" />    
+                        </div>
+
+                        <div class="hg-text">High Scores</div>
+                    </div>
+
+                    <div class="strooper">&nbsp;Strooper&nbsp;</div>
+                    <div class="level_container">
+                        <ul  class="levels">
+                            <li>
+                                <div  class="container_button btnplay">
+                                    <div class="btn3d">
+                                        <img  src="icons/play-128.png" />
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="container_button">
+                                    <div class="btn3d">
+                                        Easy
+                                    </div>
+                                </div> 
+                            </li>
+                            <li>
+                                <div class="container_button">
+                                    <div class="btn3d">
+                                        Medium
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="container_button">
+                                    <div class="btn3d">
+                                        Hard
+                                    </div>
+                                </div> 
+                            </li>
+                        </ul>
+                    </div>
+
+
+
+                    <div class="container center-align" >
+                        <ul class="hangers">
+                            <li>
+                                <div class="container_button">
+                                    <div class="btn3d btn-setting">
+                                        <img class="btn3d-img" src="icons/gear-2-64.png"/>
+                                    </div>
+                                </div> 
+                                <div class="hangers-help">Settings</div>
+                            </li>
+                            <li>
+                                <div class="container_button">
+                                    <div class="btn3d btn-info">
+                                        <img class="btn3d-img" src="icons/info-3-64.png" />
+                                    </div>
+                                </div>
+                                <div class="hangers-help">Instructions</div>
+                            </li>
+                        </ul>
+
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="pt-page pt-page-2 ">
+
+                <!--Game-->
+                <div id="game">
+                    <h3 align="center" style="">Is the word and color of word same?</h3>
+                    <div>
+                        <div class="left cols">
+                            <div class="temp" style="min-height: 161px;">
+                                <div  class="img-no">
+                                    <img  src="icons/i/no_r.png" />
+                                    <div class="label-d">
+                                        Oops
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="inst bots">
+                                <img class="home" src="icons/home-6-64.png" style="vertical-align: middle;width: 36px;margin-right: -4px;"/>
+                                <img class="btn-info" src="icons/info-3-64.png" style="width: 42px;
+                                     vertical-align: middle;"/>
+                                <img class="btn-setting" src="icons/gear-64_1.png" style="width: 40px;
+                                     vertical-align: middle;
+                                     margin-left: -4px;"/>
+                            </div>
+                        </div>
+                        <div class="center cols">
+                            <div id="timer">
+                                <div id="counter"></div>
+                            </div>
+                            <div id="color-box">
+                                &nbsp;
+                            </div>
+                            <div id="ss">
+                                <ul  class="stars">
+                                    <li id="score">0</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="right cols">
+                            <div class="temp">
+                                <div  class="img-yes">
+                                    <img src="icons/i/yes_r.png"  width="110" style="margin-bottom: 8px   "/>
+                                    <div class="label-d">
+                                        Awesome
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                            <div class="restart-game">
+                                <div style="min-height: 32px;text-align: center;margin-bottom: 9px;">
+                                    <div class="up-arrow"><img src="icons/arrow-34-32_up.png" /></div>
+                                </div>
+                                <div style="min-height: 35px;padding: 0px 16px;">
+                                    <div class="left-arrow arrs"><img src="icons/arrow-34-32_left.png" /> No</div>
+                                    <div class="down-arrow arrs"><img src="icons/arrow-34-32_down.png" /></div>
+                                    <div class="right-arrow arrs">Yes <img src="icons/arrow-34-32.png" /></div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <!--Game Ends-->
+            </div>
+        </div>
+
+        <div class="modal" id="modal_setting">
+            <div class="btn_close_container">
+                <div class="btn_close">
+                    <div class="btn_close_3d">
+                        <img src="icons/x-mark-3-48.png" />
+                    </div>
+                </div>
+            </div>
+            <div class="con_settings">
+                <div class="rs">
+                    <div class="lbl">
+                        Music
+                    </div>
+                    <div class="slider-frame">
+                        <span class="slider-button">OFF</span>
+                    </div>
+                    <div class="p_con">
+                        <input type="text" class="musiz" data-slider="true" data-slider-range="0,100" data-slider-step="1" value="100" data-slider-highlight="true" data-slider-theme="volume">
+                    </div>
+                </div>
+                <div class="rs">
+                    <div class="lbl">
+                        SFX
+                    </div>
+                    <div class="slider-frame" style="margin-left: 57px;">
+                        <span class="slider-button">OFF</span>
+                    </div>
+                    <div class="p_con">
+                        <input type="text" class="sfx" data-slider="true" data-slider-range="0,100" data-slider-step="1" value="100" data-slider-highlight="true" data-slider-theme="volume">
+                    </div>
+                </div>
+                <div style="font-size: 28px;font-family: xyz;text-align: center;letter-spacing: 6px;color:white;">
+                    <!--About Us-->
+                    &nbsp;
+                </div>
+            </div>
+        </div>
+
+
+        <div class="modal" id="modal_inst">
+            <div class="btn_close_container">
+                <div class="btn_close">
+                    <div class="btn_close_3d">
+                        <img src="icons/x-mark-3-48.png" />
+                    </div>
+                </div>
+            </div>
+
+            <h2>How to play?</h2>
+            <div class="p">
+                <div>
+                    In this game a word will be displayed in a colour and the word itself will be the name of a colour.
+                </div>
+                <div>
+                    You need to check whether the colour of the word is same as that of the word itself.</div>
+                <div>
+                    If the word is red and is displayed in red colour you have to click "yes".
+                </div>
+
+                <div>If you are right, you will gain stars.</div>
+
+                Good luck!
+            </div>
+
+        </div>
+
+        <div class="modal" id="modal_game">
+            <div class="btn_close_container">
+                <div class="btn_close">
+                    <div class="btn_close_3d">
+                        <img src="icons/x-mark-3-48.png" />
+                    </div>
+                </div>
+            </div>
+            <div class="g-o">
+                Game Over
+            </div>
+            <div id="final-score">
+                Your score is 0
+            </div>
+            <div class="loader-con">
+                <div class="loader">
+                    <div class="windows8">
+                        <div class="wBall" id="wBall_1">
+                            <div class="wInnerBall">
+                            </div>
+                        </div>
+                        <div class="wBall" id="wBall_2">
+                            <div class="wInnerBall">
+                            </div>
+                        </div>
+                        <div class="wBall" id="wBall_3">
+                            <div class="wInnerBall">
+                            </div>
+                        </div>
+                        <div class="wBall" id="wBall_4">
+                            <div class="wInnerBall">
+                            </div>
+                        </div>
+                        <div class="wBall" id="wBall_5">
+                            <div class="wInnerBall">
+                            </div>
+                        </div>
+                    </div> 
+                </div>
+                <div class="loading-text">Please wait your score is been submitted</div>
+            </div>
+            <div class="btnNew-con" style="text-align: center;margin-top: 30px;display: none;">
+                <div class="btnHome replay-con" style="width: 50%;">
+                    <img src="icons/home-6-64.png" />
+                    <div class="bring-up" style="color: white;font-size: 18pt;">Home</div>
+                </div>
+                <div class="btnNew replay-con" style="width: 50%;left: 50%;">
+                    <img src="icons/recurring-appointment-64.png" />
+                    <div class="bring-up" style="color: white;font-size: 18pt;">Replay</div>
+                </div>
+            </div>
+        </div>
+        <script src="js/jQuery1.8.3.js"></script>
+        <script src="js/easing.js"></script>
+        <script src="js/bpopup-master/jquery.bpopup.min.js"></script>
+        <script src="js/pie2/jquery.piechartcountdown.min.js"></script>
+        <script src="js/Circ/jQuery.circleMenu_1.js"></script>
+        <script src="js/progress/simple-slider.js"></script>
+        <script src="js/game_2.min.js"></script>
+        <script src="js/base64.js"></script>
+        <script>
+            
+            function loadHighScores(){
+                $('.hg-row .hg-progress span').hide();
+                $.ajax({
+                    url:'../LoadScoreStrooper',
+                    type:'POST',
+                    success:function(msg){
+                        if(msg.status=='s'){
+                            //msg.best_user_id
+                            //http://openseesame.tcs.com/OpenIgnite/Portfolio/struts/common/GetImage.action?usersId=181638&dmns=400&reqst=
+                            var easyPercent=msg.easy*50/(GAME_COUNTER_SERVLET*5);
+                            $('.hg-row .hg-progress').eq(0).find('.hg-value').animate({width:eval(50+easyPercent)+'%'}, 1000,function(){
+                                $(this).find('span').fadeIn(300).text(msg.easy);
+                            });
+                            easyPercent=msg.medium*50/(GAME_COUNTER_SERVLET*5);
+                            $('.hg-row .hg-progress').eq(1).find('.hg-value').animate({width:eval(50+easyPercent)+'%'}, 1000,function(){
+                                $(this).find('span').fadeIn(300).text(msg.medium);
+                            });
+                            easyPercent=msg.hard*50/(GAME_COUNTER_SERVLET*5);
+                            $('.hg-row .hg-progress').eq(2).find('.hg-value').animate({width:eval(50+easyPercent)+'%'}, 1000,function(){
+                                $(this).find('span').fadeIn(300).text(msg.hard);
+                            });
+                            $('.naughty').text(msg.count);
+                            $('.best-name').css('text-transform', 'capitalize').text(msg.best_name.toLowerCase());  
+                            if(msg.best_user_id!='-'&& msg.reqst!='-'){
+                                $('.best-pic').attr('src','http://openseesame.tcs.com/OpenIgnite/Portfolio/struts/common/GetImage.action?usersId='+msg.best_user_id+'&dmns=140&reqst='+msg.reqst);    
+                            }
+                            
+                        }else{
+                            $('.hg-con').addClass('hide');  
+                        }
+                    }
+                });
+            }
+            loadHighScores();
+            $('.hg-con').click(function(){
+                $('.hg-con').addClass('hide');
+                $('.high-score').addClass('active');
+            });
+            $('.hg-close').click(function(){
+                $('.hg-con').removeClass('hide');
+                $('.high-score').removeClass('active');
+            });
+            
+            
+            
+            
+            $(document).ready(function(){
+                setTimeout(function(){
+                    $('body').addClass('active');
+                    setTimeout(function(){
+                        $('.loading-show').fadeIn('fast');
+                        adjust();
+                    }, 500);
+                },2000);
+                    
+                $(window).resize(function () {
+                    /* do something */ 
+                    adjust();
+                }); 
+               
+            });
+            
+            function adjust(){
+                var windowheight = $(window).height();
+                var windowwidth = $(window).width();
+                var pagecenterW = windowwidth/2;
+                var pagecenterH = windowheight/2;
+                $("#game").css({
+                    'margin-top': pagecenterH-254 + 'px'
+                });
+            }
+            
+            
+            
+            
+            
+            
+            
+            $('.btn_close_3d').click(function(){
+                $(this).closest('.modal').bPopup().close();
+            });
+            
+            $('.btn-info').click(function(e){
+                $('#modal_inst').bPopup({
+                    easing: 'easeOutBounce', //uses jQuery easing plugin
+                    speed: 900,
+                    transition: 'slideDown'
+                });
+            });
+            $('.btn-setting').click(function(e){
+                $('#modal_setting').bPopup({
+                    easing: 'easeOutBounce', //uses jQuery easing plugin
+                    speed: 900,
+                    transition: 'slideDown'
+                });
+            });
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+            var musiz=document.createElement('audio');
+            var effx=document.createElement('audio');
+            if(effx.canPlayType('audio/mp3')){
+                effx.src='sound/2.wav';
+            }else if(musiz.canPlayType('audio/ogg')){
+                effx.src='sound/2.ogg';
+            }
+            //            effx.setAttribute('loop','1');
+            effx.volume=1;
+                
+            $('body').append(musiz);
+            $('body').append(effx);
+            function playAudio(){
+                if(musiz.canPlayType('audio/mp3')){
+                    musiz.src='sound/1.ogg';
+                }else if(musiz.canPlayType('audio/ogg')){
+                    musiz.src='sound/1.ogg';
+                }
+                musiz.setAttribute('loop','loop');
+                musiz.volume=1;
+                musiz.play();
+            }
+            
+            function playEffect(){
+                if(effx_flag){
+                    if(effx.canPlayType('audio/mp3')){
+                        effx.src='sound/2.wav';
+                    }else if(musiz.canPlayType('audio/ogg')){
+                        effx.src='sound/2.ogg';
+                    }
+                    effx.play();
+                }
+                
+            }
+            
+            $("[data-slider]")
+            .each(function () {
+                var input = $(this);
+                $("<span>")
+                .addClass("output")
+                .insertAfter($(this));
+            })
+            .bind("slider:ready slider:changed", function (event, data) {
+                $(this)
+                .nextAll(".output:first")
+                .html(data.value.toFixed(0));
+                if($(this).hasClass('musiz')){
+                    musiz.volume=data.value.toFixed(0)/100;
+                }
+                if($(this).hasClass('sfx'))
+                {
+                    effx.volume=data.value.toFixed(0)/100;
+                }
+            });
+            
+            var effx_flag=false;
+            
+            $('.slider-button').click(function(){
+                if($(this).hasClass('on')){
+                    $(this).closest('.rs').find('.p_con').css('display', 'none');
+                    if($(this).closest('.rs').index()==0){
+                        musiz.pause();
+                    }
+                    if($(this).closest('.rs').index()==1){
+                        effx_flag=false;
+                    }
+                    
+                    
+                    $(this).removeClass('on').html('OFF');   
+                }else{
+                    $(this).closest('.rs').find('.p_con').css({'display':'inline'});
+                    if($(this).closest('.rs').index()==0){
+                        playAudio();
+                    }
+                    if($(this).closest('.rs').index()==1){
+                        effx_flag=true;
+                    }
+                    
+                    $(this).addClass('on').html('ON');
+                }
+                
+            });
+            
+            $('.slider-button').eq(0).click();
+            $('.slider-button').eq(1).click();
+            $('audio').eq(0).on('canplay canplaythrough', function(){
+              
+            });
+           
+        </script>
+    </body>
+</html>

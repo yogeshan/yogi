@@ -1,0 +1,823 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Chomp</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <style>
+            *{margin: 0;padding: 0;}
+            ::selection
+            {
+                background: transparent;
+            }
+            ::-moz-selection
+            {
+                background: transparent;
+            }
+            *, *:after, *::before {
+                -moz-box-sizing: border-box;
+                box-sizing: border-box;
+            }
+
+            @font-face {
+                font-family: '3';
+                src: url('font/1-regular-webfont.woff');
+            } 
+
+            .loading{
+                color: white;
+                text-align: center;
+                font-size: 20pt;
+                position: absolute;
+                width: 100%;
+                top: 45%;
+                -webkit-transition: all .3s ease-in;
+                -moz-transition: all 0.3s ease-in;
+                -o-transition: all 0.3s ease-in;
+                transition: all 0.3s ease-in;
+                z-index: 100;
+            }
+            .loading.hide{
+                top:-200px;
+            }
+            .con-hidden{
+                display: none;
+            }
+
+        </style>
+        <link rel="stylesheet" href="css/loading_black.css" />
+        <link rel="stylesheet" href="css/easy.css" />
+        <script src="../js/modernizr.custom.75626.js"></script>
+    </head>
+    <body>
+        <div class="loading">
+            Loading
+            <div id="fountainG">
+                <div id="fountainG_1" class="fountainG">
+                </div>
+                <div id="fountainG_2" class="fountainG">
+                </div>
+                <div id="fountainG_3" class="fountainG">
+                </div>
+                <div id="fountainG_4" class="fountainG">
+                </div>
+                <div id="fountainG_5" class="fountainG">
+                </div>
+                <div id="fountainG_6" class="fountainG">
+                </div>
+                <div id="fountainG_7" class="fountainG">
+                </div>
+                <div id="fountainG_8" class="fountainG">
+                </div>
+            </div>
+
+
+        </div>
+        <div class="navigator">
+
+            <a href="#">
+                <div class="concon">
+                    <img src="icons/links/home-6-64.png">
+
+                </div>
+                <div class="hiden">Home</div>
+            </a>
+            <a href="#">
+                <div class="concon concon-lg">
+                    <img class="lg" src="icons/links/logout-64.png">
+                </div>
+                <div class="hiden hiden-lg">Logout</div>
+            </a>
+        </div>
+
+        <div class="title">Chomp</div>
+
+        <div class="con-hidden">
+            <div id="game">
+                <div id="content">
+                    <div class="row">
+                        <div class="item"></div>
+                        <div class="item"></div>
+                        <div class="item"></div>
+                        <div class="item"></div>
+                        <div class="item"></div>
+                        <div class="item"></div>
+                        <div class="item"></div>
+                    </div>
+                </div>
+                <div class="winner">
+
+                    <div class="winner-l">
+
+                        <div class="winner-img">
+                            <!--<img  src="icons/monitor-128.png" />-->
+                            <img src="icons/contacts-128.png" />
+                        </div>
+
+                    </div>
+                    <div class="winner-r">
+                        <div class="w-temp">
+                            <div class="winner-text">You Won</div>
+                            <div class="c-opt">
+                                <div class="btnHome replay-con" style="width: 30%;left:20%;">
+                                    <img src="icons/home-6-64.png" />
+                                    <div class="bring-up" >Home</div>
+                                </div>
+                                <div class="btnNew replay-con" style="width: 30%;right: 20%;">
+                                    <img src="../MemoryMatrix/icons/recurring-appointment-64.png" />
+                                    <div class="bring-up">Replay</div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <canvas id="canvas" width="800" height="500"></canvas>
+            <div id="controls">
+                <div class="settings">
+                    <img src="icons/gear-2-128.png" style="width: 80px;width: 79px;margin-top: 3px;margin-left: 2px;"/>
+                </div>
+                <div class="settings-panel">
+                    <div class="who-is-l">
+                        <div class="circ">
+                            <div class="hands"></div>
+                            <div class="body"></div>
+                            <div class="head">
+                                <div class="eye"></div> 
+                            </div>
+                        </div>
+                    </div>
+                    <div class="volume-con">
+                        <div style="">
+                            <div id="volume"></div>
+                        </div>
+                        <div class="vol-img">
+                            <img src="icons/volume-up-128.png" />
+                        </div>
+                    </div>
+                    <div class="dot-left"><img src="icons/dot.png" /></div>
+                </div>
+                <div class="instruction">
+                    <img src="icons/info-5-128.png" style="width: 72px;margin-top: 7px;margin-right: 3px;"/>
+                </div>
+                <div class="instruction-panel active">
+
+                    <div class="who-is-r">
+                        <img src="icons/monitor-128.png" />
+                        <ul class="loader">
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                        </ul>
+                    </div>
+                    <div class="inst-content">
+
+                        <div class="inst-title">How to play?</div>
+
+                        <div class="inst-row">You chomp on a fruit by clicking on the fruit with the mouse.</div>
+                        <div class="inst-row">A move consists of chomping a square out of the fruits along with any squares to the right and above.</div>
+                        <div class="inst-row">The lower left fruit is poisoned pumpkin and the player forced to chomp it loses.</div>
+                        <div class="inst-row">Players move alternately.</div>
+                        <div class="inst-row">You can win from the initial position, but be careful! </div>
+                        <div class="inst-last">All the best!!</div>
+                        <div class="evil-pump"><img src="icons/temp/evil.png" /></div>
+                    </div>
+                    <div class="dot-right"><img src="icons/dot-right.png" /></div>
+                </div>
+
+            </div>
+        </div>
+
+
+
+        <script src="js/jQuery1.8.3.js"></script>
+        <script src="js/jquery-ui.js"></script>
+        <script>
+           
+            //***********************************************
+            //***********************************************
+            //******************MUSIZ STARTS****************
+            //***********************************************
+            //***********************************************
+            $('.vol-img').click(function(){
+                if($('.vol-img').hasClass('mute')){
+                    $( "#volume" ).slider({ value: 100 });
+                    musiz.volume=1;
+                    effx.volume=1;
+                    $('.vol-img').removeClass('mute');
+                    $('.vol-img img').attr('src','icons/volume-up-128.png');
+                }else{
+                    musiz.volume=0;
+                    effx.volume=0;
+                    $('.vol-img').addClass('mute');
+                    $('.vol-img img').attr('src','icons/mute-128.png');
+                }
+            });
+            
+            $( "#volume" ).slider({
+                min: 0,
+                max: 100,
+                value: 100,
+                orientation: "vertical",
+                range: "min",
+                animate: true,
+                slide: function( event, ui ) {
+                    musiz.volume=ui.value/100;
+                    effx.volume=ui.value/100;
+                }
+            });
+            
+            
+            
+            
+            var musiz=document.createElement('audio');
+            var effx=document.createElement('audio');
+            if(effx.canPlayType('audio/mp3')){
+                effx.src='sound/2.wav';
+            }else if(effx.canPlayType('audio/ogg')){
+                effx.src='sound/2.ogg';
+            }
+            //            effx.setAttribute('loop','1');
+            effx.volume=1;
+                
+            $('body').append(musiz);
+            $('body').append(effx);
+            function playAudio(){
+                if(musiz.canPlayType('audio/mp3')){
+                    musiz.src='sound/1.ogg';
+                }else if(musiz.canPlayType('audio/ogg')){
+                    musiz.src='sound/1.ogg';
+                }
+                musiz.setAttribute('loop','loop');
+                musiz.volume=1;
+                musiz.play();
+            }
+            
+            function playEffect(){
+                if(effx_flag){
+                    if(effx.canPlayType('audio/mp3')){
+                        effx.src='sound/2.wav';
+                    }else if(musiz.canPlayType('audio/ogg')){
+                        effx.src='sound/2.ogg';
+                    }
+                    effx.play();
+                }
+                
+            }
+            playAudio();
+            $('audio').eq(0).on('canplay canplaythrough', function(){
+                
+            });
+            
+            //***********************************************
+            //***********************************************
+            //******************MUSIZ ENDS******************
+            //***********************************************
+            //***********************************************
+            
+            
+            
+            
+            $(document).ready(function() {
+                setTimeout(function(){
+                    $('.loading').addClass('hide');
+                    $('.con-hidden').fadeIn(600);
+                    adjust();
+                }, 2000);
+            });
+            function adjust() {
+                var windowheight = $(window).height();
+                var windowwidth = $(window).width();
+                var pagecenterW = windowwidth / 2;
+                var pagecenterH = windowheight / 2;
+                $("#game").css({top: pagecenterH - 254 + 'px', left: pagecenterW - 408 + 'px'});
+                $("#canvas").css({top: pagecenterH - 254 + 'px', left: pagecenterW - 408 + 'px'});
+                $("#controls").css({top: pagecenterH - 254 + 'px', left: pagecenterW - 408 + 'px'});
+            }
+            $(window).resize(function() {
+                /* do something */
+                adjust();
+            });
+
+            $('.settings').click(function() {
+                $('body').toggleClass('slideright');
+            });
+            $('.instruction').click(function() {
+                $('body').toggleClass('slideleft');
+                //                $('.instruction-panel').toggleClass('active');
+                //                $('.settings-panel').toggleClass('active');
+            });
+            
+            
+            
+            
+            
+            
+            
+            
+            $('.btnNew').click(function(){
+                init();
+            });
+            $('.btnHome').click(function(){
+                top.location.href='index.html';
+            });
+            
+            
+            
+            
+            $('#game .item').live('mouseover',function(){
+                if($('#game').hasClass('d')){
+                    return 0;
+                }
+                var row=$(this).parent().index();
+                var item=$(this).index();
+                if(row==3 && item==0)
+                {
+                    //                        if(((c_rows[1]-1)+c_rows[2])==0)
+                    //                            $('#game .row').eq(i).children().eq(item).addClass('bg');
+                }
+                
+                for (var i = 0; i <= row; i++) {
+                    if(i==row)
+                    {
+                        $('#game .row').eq(i).children().eq(item).addClass('bg').nextAll().addClass('bg');
+                    }
+                    else
+                    {
+                        $('#game .row').eq(i).children().eq(item).addClass('bg');
+                    }
+                    $('#game .row').eq(i).children().eq(item).addClass('shake').nextAll().addClass('shake');
+                }   
+                
+               
+                 
+            });
+            $('#game .item').live('mouseout',function(){
+                $('.item').removeClass("bg").removeClass('shake');
+                
+            });
+            
+            
+            
+            
+            var fruits=[{cl:"apple",c:'#d6ed84'},{cl:"banana",c:'#FFEE7B'},{cl:"grape",c:'#cd5fd3'},{cl:'lemon',c:'#FFEE7B'},{cl:'rasberry',c:'#FF5387'},{cl:'strawberry',c:'#E22604'},{cl:'water',c:'#E22604'}];
+            var c_x,c_y;
+            
+            var c_cols=7;   
+            
+            
+            var c_ppos=[1,12,23,34,45,56,113,122,224,235,246,336,355,1114,1125,1133,1222,2226,2255,2335];
+            
+            var c_rows = [];
+            var c_box = [];
+
+            var canvasStartAnimation=false;
+            var timer;
+
+            for (var i=1;i<=4;i++) {
+                c_box[i]=[];
+            }
+            function init(){
+                var html='';
+                for (var i=4;i>0;i--) {
+                    html+='<div class="row">'    
+                    for (var j=1;j<=c_cols;j++) {
+                        var rnd=getRandomInt(0, fruits.length-1);
+                        var fruit=fruits[rnd];
+                        html+='<div class="item '+fruit.cl+'" data-u='+i+' data-v='+j+' data-c="'+fruit.c+'"></div>'
+                        c_box[i][j]=1
+                    }
+                   
+                    html+='</div>';    
+                }
+                $('#content').html(html);
+                $('#game .item').eq(c_cols*3).addClass('pumpkin').data('c','#FEFA8D');
+                c_box[1][1]=0;
+                if(ctx!=null){
+                    ctx.clearRect(0, 0, 800, 500);
+                }
+                
+                $('#game').removeClass('d');
+                //actually hides 
+                $('.instruction-panel').addClass('active');
+                $('.settings-panel').removeClass('active');
+                setTimeout("$('.winner').hide();", 300);
+                $('.winner').removeClass('active');
+                timer=new Date();
+            }
+            init();
+
+           
+            $('.item').live('click',function(e){
+                e.stopPropagation();
+                if($('#game').hasClass('d')){
+                    return 0;
+                }
+                $('#game').addClass('d');
+                
+                var row=$(this).parent().index();
+                var item=$(this).index();
+                eatFruits(row,item);
+                //actually hides
+                $('.instruction-panel').removeClass('active');
+                $('.settings-panel').addClass('active');
+                var dt_u=$(this).data('u');
+                var dt_v=$(this).data('v');
+                if(row==3 && item==0){
+                    showWinner("Computer");
+                    return 0;
+                }
+                yourChoice(dt_u,dt_v);
+            });
+            
+            
+            
+            function computerClick(tmp,c_y){
+                $('#game').removeClass('d');
+                
+                
+                var row=tmp;
+                var item=c_y;
+                eatFruits(row,item);
+                //actually hides 
+                $('.instruction-panel').addClass('active');
+                $('.settings-panel').removeClass('active');
+                if(((c_rows[1])+c_rows[2])==1)               
+                {
+                    ////                    //                    alert('Comp won');
+                    ////                    $('.title').text('Comp won');
+                    //                    calculate time and submit score;
+                    showWinner("Computer");
+                }
+            }
+            
+            function computerPumpkinClick(){
+                $('#game').removeClass('d');
+                
+                
+                var row=3;
+                var item=0;
+                eatFruits(row,item);
+                showWinner("Player");
+            }
+            
+            
+            
+            
+            
+            
+            //*************************************
+            //*************************************
+            //***********WINNER STARTS************
+            //*************************************
+            //*************************************
+            function showWinner(win){
+                $('.instruction-panel').addClass('active');
+                $('.settings-panel').addClass('active');
+                $('.winner').show();
+                setTimeout("$('.winner').addClass('active');", 400);
+                $('.winner-text').text(win+' Won');
+                var status='-';
+                if(win==='Player'){
+                    status='w';
+                    $('.winner-img img').attr('src','icons/contacts-128.png');
+                }else if(win==='Computer'){
+                    status='l';
+                    $('.winner-img img').attr('src','icons/monitor-128.png');
+                }
+                var endtimer=new Date();
+                var play_time=(endtimer.getTime()-timer.getTime())/1000;
+                $('.winner-text').text(win+' Won');
+                
+                
+                
+                
+                
+                
+                $.ajax({
+                    url:'../SubmitScoreChomp',
+                    type:'POST',
+                    data:{s:status,t:play_time,l:'Hard'},
+                    success:function(data)
+                    {
+                        if(data.status=='e'){
+                            alert('Something went wrong');
+                        }else if(data.status=='se'){
+                            top.location.href='index.html';
+                        }else if(data.status=='f'){
+                            alert(data.msg);
+                        }else if(data.status=='s'){
+                            console.log("Success");
+                        }    
+                    }
+                });
+                
+            }
+            //*************************************
+            //*************************************
+            //***********WINNER ENDS**************
+            //*************************************
+            //*************************************
+            
+            
+            
+            
+            
+            
+            //*************************************
+            //*************************************
+            //***********Computer Algo**************
+            //*************************************
+            //*************************************
+            
+            function yourChoice(u,v)
+            {
+                
+                if((u==1) && (v==1))
+                {
+                   
+                
+                }
+                else
+                {
+                    if (c_box[u][v]==1) {
+                        Move(u,v);
+                        //CompPlaying
+                        encode();
+                                      
+                        c_x=findMove();
+                        
+                        if(((c_rows[1])+c_rows[2])==1)  
+                        {
+                            var rndtime=getRandomInt(1000, 2000);
+                            
+                            setTimeout(computerPumpkinClick,rndtime);
+                            //calculate time and submit score;
+                            return;
+                        }
+                        var tmp=4-c_x;
+                        var rndtime=getRandomInt(1000, 2500);
+                        setTimeout(function()
+                        {
+                            
+                            computerClick(tmp,c_y);
+                            //PLayer playing
+                        },rndtime);
+                        Move(c_x,c_y+1);
+                        encode();
+                  
+                        
+
+                    }
+                }
+                
+            }
+                  
+            
+            
+
+            
+            function Move(x,y) {
+                for (var k1=x;k1<=4;k1++) {
+                    for (var k2=y;k2<=c_cols;k2++) {
+                        //document.images[(4-k1)*c+k2-1].src=com;
+                        c_box[k1][k2]=0;
+                    }
+                }
+                
+            }
+            
+                
+            
+            
+            
+
+            function encode() {               //maps position into n[1],n[2],n[3],n[4]
+                for (var i=1;i<5;i++) {
+                    c_rows[i]=0;
+                    for (var j=1;j<=c_cols;j++) {
+                        c_rows[i]=c_rows[i]+c_box[i][j];
+                    }
+                }
+                c_rows[1]=c_rows[1]+1;
+            }
+
+            function findMove() {
+                
+                
+                var t=10
+                var k=c_ppos.length-1;
+                for (c_y=c_rows[1]-1;c_y>=c_rows[2];c_y--) {
+                    val=c_y+t*(c_rows[2]+t*(c_rows[3]+t*c_rows[4]));
+                    while (val<c_ppos[k]) k--;
+                    if (val==c_ppos[k]) {return 1};
+                }
+                for (c_y=c_rows[2]-1;c_y>=c_rows[3];c_y--) {
+                    val=c_rows[1]+t*(c_y+t*(c_rows[3]+t*c_rows[4]));
+                    while (val<c_ppos[k]) k--;
+                    if (val==c_ppos[k]) {return 2};
+                    val=c_y+t*(c_y+t*(c_rows[3]+t*c_rows[4]));
+                    while (val<c_ppos[k]) k--;
+                    if (val==c_ppos[k]) {return 1};
+                }
+                for (c_y=c_rows[3]-1;c_y>=c_rows[4];c_y--) {
+                    val=c_rows[1]+t*(c_rows[2]+t*(c_y+t*c_rows[4]));
+                    while (val<c_ppos[k]) k--;
+                    if (val==c_ppos[k]) {return 3};
+                    val=c_rows[1]+t*(c_y+t*(c_y+t*c_rows[4]));
+                    while (val<c_ppos[k]) k--;
+                    if (val==c_ppos[k]) {return 2};
+                    val=c_y+t*(c_y+t*(c_y+t*c_rows[4]));
+                    while (val<c_ppos[k]) k--;
+                    if (val==c_ppos[k]) {return 1};
+                }
+                for (c_y=c_rows[4]-1;c_y>=0;c_y--) {
+                    val=c_rows[1]+t*(c_rows[2]+t*(c_rows[3]+t*c_y));
+                    while (val<c_ppos[k]) k--;
+                    if (val==c_ppos[k]) {return 4};
+                    val=c_rows[1]+t*(c_rows[2]+t*(c_y+t*c_y));
+                    while (val<c_ppos[k]) k--;
+                    if (val==c_ppos[k]) {return 3};
+                    val=c_rows[1]+t*(c_y+t*(c_y+t*c_y));
+                    while (val<c_ppos[k]) k--;
+                    if (val==c_ppos[k]) {return 2};
+                    val=c_y+t*(c_y+t*(c_y+t*c_y));
+                    while (val<c_ppos[k]) k--;
+                    if (val==c_ppos[k]) {return 1};
+                }
+                if (c_rows[4]>0) {
+                    c_y=c_rows[4]-1;
+                    return 4;
+                } else if (c_rows[3]>0) {
+                    c_y=c_rows[3]-1;
+                    return 3;
+                } else if (c_rows[2]>0) {
+                    c_y=c_rows[2]-1;
+                    return 2;
+                } else {
+                    c_y=c_rows[1]-1;
+                    return 1;
+                }
+   
+            }
+            //*************************************
+            //*************************************
+            //*********Computer Algo ENDS***********
+            //*************************************
+            //*************************************
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            //************************************************************//
+            //************************************************************//
+            //********************Canvas Animation Starts********************//
+            //************************************************************//
+            //************************************************************//
+            
+            var canvas = document.getElementById("canvas");
+            var ctx = canvas.getContext("2d");
+
+            var particles = [];
+
+            canvas.onmousedown = function(e)
+            {
+               
+            }
+
+            canvas.onmouseup = function()
+            {
+                //                ctx.clearRect(0, 0, 600, 600);
+            }
+
+            function animate()
+            {
+                
+               
+                //                delta = Date.now() - last;
+                //                last = Date.now();
+                for (var i = 0; i < particles.length; i++)
+                {
+                    var p = particles[i];
+                    p.x += Math.cos(p.angle) * 4 + Math.random() * 2 - Math.random() * 2;
+                    p.y += Math.sin(p.angle) * 4 + Math.random() * 2 - Math.random() * 2;
+                    //                    p.life -= delta;
+                    //                    p.size -= delta / 60;
+                    p.life -= 27;
+                    p.size -= 1/3;
+                    if (p.size <= 0)
+                    {
+                        p.life = 0;
+                    }
+        
+                    if (p.life <= 0)
+                    {
+                       
+                        particles.splice(i--, 1);
+                        continue;
+                    }
+                }
+            }
+
+            function render()
+            {
+                ctx.fillStyle = "#FFFF00";
+                for (var i = 0; i < particles.length; i++)
+                {
+                     
+                    var p = particles[i];
+                    ctx.fillStyle = p.color;
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2, true);
+                    ctx.fill();
+                }
+            }
+
+            window.requestAnimFrame = (function(){
+                return  window.requestAnimationFrame       ||
+                    window.webkitRequestAnimationFrame ||
+                    window.mozRequestAnimationFrame    ||
+                    function( callback ){
+                    window.setTimeout(callback, 1000 / 60);
+                };
+            })();
+
+            (function animloop(){
+                requestAnimFrame(animloop);
+                
+                if(canvasStartAnimation){
+                    animate();   
+                    render();    
+                }
+                if(particles.length<=0){
+                    canvasStartAnimation=false;
+                }
+            })();
+            
+            function getRandomInt(min, max)
+            {
+                return Math.floor(Math.random() * (max - min + 1)) + min;
+            }
+            function eatFruits(row,item){
+                ctx.clearRect(0, 0, 800, 500);
+                for (var j = 0; j <= row; j++) {
+                    var nut=$('#game .row').eq(j).children().eq(item);
+                    var x=nut.width()/2;
+                    var y=nut.height()/2;
+                    y=62;
+                    if(x!=0){
+                        for (var i = 0; i < 36*2 ; i+=1)
+                        {
+                            particles.push({
+                                x: x+item*nut.width(),
+                                y:y+j*124,
+                                angle: i * 5,
+                                size: 5+ Math.random() * 5,
+                                life: 1000 + Math.random() * 100,
+                                color:nut.data('c')
+                            });
+                        }
+                    
+                    }
+                    nut.nextAll().each(function(){
+                        var x=$(this).width()/2;
+                        var y=$(this).height()/2;
+                        y=62;
+                        for (var i = 0; i < 36*2 ; i+=1)
+                        {
+                            particles.push({
+                                x: x+$(this).index()*$(this).width(),
+                                y:y+j*124,
+                                angle: i * 5,
+                                size: 5+ Math.random() * 5,
+                                life: 1000 + Math.random() * 100,
+                                color:$(this).data('c')
+                            });
+                        }
+                    });
+                    nut.nextAll().remove();
+                    nut.remove();
+                } 
+                canvasStartAnimation=true;
+            }
+            
+            
+            
+        </script>
+
+    </body>
+</html>

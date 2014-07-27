@@ -1,0 +1,114 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <style>
+            .abc,.bbc,.cbc,.dbc{
+                position: relative;
+                z-index: 1;
+                -webkit-transition: all .2s ease;
+                -moz-transition: all .2s ease;
+                -o-transition: all .2s ease;
+                -ms-transition: all .2s ease;
+                transition: all .2s ease;
+            }
+
+            .abc:hover{
+/*                z-index: 10;
+                -webkit-transform: translateY(13px);*/
+                stroke: #F15A24;
+                stroke-width: 1px;
+            }
+
+            .bbc:hover{
+                -webkit-transform: scale(1.04) translate(-4px,-2px);
+                -webkit-transform: translateY(-14px);
+
+                stroke: #F15A24;
+                stroke-width: 1px;
+            }
+            .cbc:hover{
+                /*-webkit-transform: scale(1.04) translate(-4px,-2px);*/
+                -webkit-transform: translateY(-24px);
+                stroke: #F15A24;
+                stroke-width: 1px;
+            }
+            .dbc:hover{
+                /*-webkit-transform: scale(1.04) translate(-4px,2px);*/
+                -webkit-transform: translateY(-22px);
+                stroke: #F15A24;
+                stroke-width: 1px;
+            }
+        </style>
+    </head>
+    <body>
+        <div style="text-align: center;padding-top: 50px;">
+
+
+            <?xml version="1.0" encoding="utf-8"?>
+            <!-- Generator: Adobe Illustrator 15.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+            <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                 width="100%" height="400px" style="padding: 50px;" viewBox="0 0 364.5 133" enable-background="new 0 0 364.5 133" xml:space="preserve">
+            <polygon class="abc x" fill="#003B5A" points="246,38 189,0 0,0 0,27 189,27 246,50 323,50 323,38 "/>
+            <polygon class="bbc x" fill="#AAD2D2" points="246,51 189,31 0,31 0,58 189,58 246,63 323,63 323,51 "/>
+            <polygon class="cbc x" fill="#003B5A" points="246,70 189,75 0,75 0,102 189,102 246,82 323,82 323,70 "/>
+            <polygon class="dbc x" fill="#AAD2D2" points="246,83 189,106 0,106 0,133 189,133 246,95 323,95 323,83 "/>
+            <g>
+            <path fill="#FFFFFF" d="M323,104.5c-20.678,0-37.5-16.822-37.5-37.5s16.822-37.5,37.5-37.5s37.5,16.822,37.5,37.5
+                  S343.678,104.5,323,104.5z"/>
+            <path fill="#F15A24" d="M323,33.5c18.502,0,33.5,14.998,33.5,33.5s-14.998,33.5-33.5,33.5S289.5,85.502,289.5,67
+                  S304.498,33.5,323,33.5 M323,25.5c-22.883,0-41.5,18.617-41.5,41.5c0,22.883,18.617,41.5,41.5,41.5s41.5-18.617,41.5-41.5
+                  C364.5,44.117,345.883,25.5,323,25.5L323,25.5z"/>
+            </g>
+            </svg>
+        </div>
+
+        <script src="../../../../js/jQuery1.8.3.js"></script>
+        <script>
+            
+            $( ".abc" ).mouseover(function() {
+                $(this).attr('points','246,33 189,-16 0,-16 0,19 189,19 246,50 323,50 323,33 ');
+                
+
+            });
+            $( ".abc" ).mouseout(function() {
+                $(this).attr('points','246,38 189,0 0,0 0,27 189,27 246,50 323,50 323,38 ');
+            });
+            
+            
+            
+            $( ".bbc" ).mouseover(function() {
+                $(this).attr('points','246,65 189,39 0,39 0,74 189,74 246,80 323,80 323,65 ');
+            });
+            $( ".bbc" ).mouseout(function() {
+                $(this).attr('points','246,51 189,31 0,31 0,58 189,58 246,63 323,63 323,51 ');
+            });
+            
+            
+            
+            
+            $( ".cbc" ).mouseover(function() {
+                $(this).attr('points','246,89 189,95 0,95 0,130 189,130 246,104 323,104 323,89 ');
+            });
+            $( ".cbc" ).mouseout(function() {
+                $(this).attr('points','246,70 189,75 0,75 0,102 189,102 246,82 323,82 323,70  ');
+            });
+            
+            
+            
+            $( ".dbc" ).mouseover(function() {
+                $(this).attr('points','246,105 189,135 0,135 0,169 189,169 246,121 323,121 323,105 ');
+            });
+            $( ".dbc" ).mouseout(function() {
+                $(this).attr('points','246,83 189,106 0,106 0,133 189,133 246,95 323,95 323,83 ');
+            });
+            
+        </script>
+    </body>
+</html>

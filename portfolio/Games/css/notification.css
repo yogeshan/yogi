@@ -1,0 +1,310 @@
+
+.noti-container{
+    display: none;
+    /*position: absolute;*/
+    width: 99%;
+    /*height: 300px;*/
+    z-index: 1000;
+    color: white;
+    vertical-align: top;
+    margin-bottom: 10px;
+
+}
+.notification{
+    min-height: 65px;
+    border-bottom: 1px solid #444;
+    background: rgba(0, 0, 0, 0.7);
+    transition: all 0.4s ease;
+    -webkit-transition:  all 0.4s ease;
+}
+.notification:hover{
+    background: rgba(0, 0, 0, 0.8);
+}
+.profile-img{
+    width: 64px;
+    height: 64px;
+    float: left;
+    margin-right: 20px;
+    background: #AFAFAF;
+}
+.profile-img.default{
+    padding: 9px;
+}
+.notification span.who{
+    line-height: 44pt;
+    font-size: 16pt;
+    letter-spacing: 1px;
+}
+.acceptance-box{
+    float: right;
+    display: none;
+
+}
+
+.notification:hover .acceptance-box{
+    display: block;
+}
+
+
+
+
+
+
+
+
+
+
+
+.btn{
+    border: none;
+    background: none;
+    cursor: pointer;
+    padding: 9px 46px;
+    display: inline-block;
+    margin-top: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    outline: none;
+    position: relative;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+}
+.btn-animate{
+    font-size: 12px;
+    font-weight: 700;
+    border-radius: 3px;
+    border: 2px solid #fff;
+    color: #fff;
+    overflow: hidden;
+    margin-right: 12px;
+}
+
+.btn-animate:active {
+    border:2px solid #CCC;
+
+}
+
+.btn-animate:hover {
+    background: #1A4DA8;
+}
+.btn-animate span{
+    position: absolute;
+    height: 100%;
+    line-height: 42px;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+    left: 130%;
+    top: 0;
+}
+.btn-animate:hover span{
+    left: 85%;
+}
+
+
+
+.btn-animate:hover span.rot {
+    width: 60%;
+}
+.btn-animate span.rot{
+    width: 30%;
+    height: 200%;
+    background: rgba(255,255,255,0.1);
+    z-index: 1;
+    right: 0;
+    top: 0;
+    margin: -5px 0 0 -18px;
+    -webkit-transform-origin: 0 0;
+    -webkit-transform: rotate(-20deg);
+    -moz-transform-origin: 0 0;
+    -moz-transform: rotate(-20deg);
+    -ms-transform-origin: 0 0;
+    -ms-transform: rotate(-20deg);
+    transform-origin: 0 0;
+    transform: rotate(-20deg);
+}
+@media only screen and (max-width : 480px) {
+
+}
+@media only screen and (max-width : 800px) and (min-width : 481px) {
+    .notification span.who{
+        font-size: 14px;
+        line-height: 15px;
+        margin-top: 33px;
+        position: relative;
+        top: 11px;
+    }
+    .btn-animate{
+        letter-spacing: 0px;
+        font-weight: normal;
+        padding: 6px 18px;
+        margin-top: 16px;
+        margin-right: 5px;
+    }
+    .btn-animate:hover span{
+        left: 65%;
+    }
+    .btn-animate span{
+        line-height: 36px;
+    }
+    .btn-animate span img {
+        position: relative;
+        left: 17px;
+    }
+    .btn-animate:nth-child(2) span img {
+        position: relative;
+        left: 10px;
+    }
+}
+
+
+
+@media only screen and (max-width : 1024px) and (min-width : 801px) {
+    .notification span.who{
+        font-size: 14px;
+    }
+    .btn-animate{
+        letter-spacing: 0px;
+        font-weight: normal;
+        padding: 6px 33px;
+        margin-top: 16px;
+        margin-right: 5px;
+    }
+    .btn-animate span{
+        line-height: 36px;
+    }
+    .btn-animate span img {
+        position: relative;
+        left: -5px;
+    }
+}
+
+@media only screen and (max-width : 1290px) and (min-width : 1025px) {
+    /* Medium desktop: 4 tiles */
+    .notification span.who{
+        letter-spacing: 0px;
+        font-weight: normal;
+    }
+    .btn-animate{
+        letter-spacing: 1px;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*SMALL NOTI STARTS*/
+
+
+.noti-new-container{
+    display: none;
+    width: 240px;
+    height: 30px;
+    margin: 0 auto;
+}
+.noti-new{
+    width: 240px;
+    height: 30px;
+    margin: 0 auto;
+    background: rgba(0, 0, 0, 0.65);
+    position: relative;
+    top: -15px;
+    box-shadow: 0px 0px 0px 2px white;
+    border-radius: 2px;
+    font-size: 16px;
+    text-align: center;
+    padding: 0px 0px 0px 13px;
+    line-height: 30px;
+    cursor: pointer;
+}
+.noti-new img{
+    width: 30px;
+    float: right;
+    margin-right: 5px;
+    -webkit-animation :pound .25s infinite alternate;  
+    -moz-animation :pound .25s infinite alternate;  
+    -ms-animation :pound .25s infinite alternate;  
+    -o-animation :pound .25s infinite alternate;  
+    animation: pound .25s infinite alternate;  
+}
+@-webkit-keyframes pound{
+    to{-webkit-transform:scale(1.1);}
+}
+@-moz-keyframes pound{
+    to{-moz-transform:scale(1.1);}
+}
+@-o-keyframes pound{
+    to{-o-transform:scale(1.1);}
+}
+@-ms-keyframes pound{
+    to{-ms-transform:scale(1.1);}
+}
+@keyframes pound{
+    to{transform:scale(1.1);}
+}
+
+
+
+.noti-count.visible-phone{
+
+}
+.tle .noti-count{
+    font-size: 16px;
+}
+.tle span.visible-desktop{
+    font-size: 16px;
+}
+.visible-desktop,.visible-phone{
+    display: none;
+}
+@media only screen and  (max-width : 1024px) {
+    .visible-phone{
+        display: inline-block;
+    }
+
+    .noti-new{
+        width: 76px;
+        padding:0px 0px 0px 6px;
+        top:0px;
+    }
+}
+@media only screen and  (min-width : 1025px) and  (max-width : 1180px){
+    .visible-phone{
+        display: inline-block;
+    }
+    .noti-new-container{
+        margin-top:-30px;
+    }
+    .noti-new{
+        width: 76px;
+        padding:0px 0px 0px 6px;
+    }
+}
+@media only screen and  (min-width : 1180px) {
+    .visible-desktop{
+        display: inline-block;
+    }
+
+    .noti-new-container{
+        margin-top:-30px;
+    }
+    .noti-new img{
+        float: left;
+    }
+}
+/*SMALL NOTI ENDS*/

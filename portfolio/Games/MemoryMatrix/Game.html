@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Memory Matrix</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="SHORTCUT ICON" href="../img/favicon.ico"/>
+        <style>
+            @font-face {
+                font-family: '3';
+                src: url('font/1-regular-webfont.woff');
+            } 
+            @font-face {
+                font-family: 'xyz';
+                src: url('font/OogieBoogie.ttf');
+            }
+            html, body { height: 100%;text-rendering: optimizelegibility; }
+            body{
+                font-family: '3';
+                overflow: hidden;
+            }
+
+            .loading{
+                color: white;
+                text-align: center;
+                font-size: 20pt;
+                position: absolute;
+                width: 100%;
+                top: 45%;
+                -webkit-transition: all .3s ease-in;
+                -moz-transition: all 0.3s ease-in;
+                -o-transition: all 0.3s ease-in;
+                transition: all 0.3s ease-in;
+            }
+            .loading-show{
+                display: none;
+            }
+
+            body.active .loading{
+                top:-200px;
+            }
+        </style>
+        <link rel="stylesheet" href="css/button.css" />
+        <link rel="stylesheet" href="css/radio.css" />
+        <link rel="stylesheet" href="js/progress/simple-slider.css" />
+        <link rel="stylesheet" href="js/progress/simple-slider-volume.css" />
+
+        <link rel="stylesheet" type="text/css" href="css/component.css" />
+        <link rel="stylesheet" type="text/css" href="css/animations.css" />
+        <link rel="stylesheet" type="text/css" href="css/loader.css" />
+        <link rel="stylesheet" href="css/game.css" />
+
+    </head>
+    <body>
+        <div id="pt-main" class="pt-perspective">
+            <div class="pt-page pt-page-1 pt-page-current ">
+                <div class="loading">
+                    Loading
+                    <div id="fountainG">
+                        <div id="fountainG_1" class="fountainG">
+                        </div>
+                        <div id="fountainG_2" class="fountainG">
+                        </div>
+                        <div id="fountainG_3" class="fountainG">
+                        </div>
+                        <div id="fountainG_4" class="fountainG">
+                        </div>
+                        <div id="fountainG_5" class="fountainG">
+                        </div>
+                        <div id="fountainG_6" class="fountainG">
+                        </div>
+                        <div id="fountainG_7" class="fountainG">
+                        </div>
+                        <div id="fountainG_8" class="fountainG">
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="high-score">
+                    <div class="h3">
+                        <div class="hg-close"><img  src="icons/x-mark-3-48.png" style="width: 16px;"/></div>
+                        High scores
+                    </div>
+                    <div class="hg-row">
+                        <div class="hg-progress">
+                            <div class="hg-value">
+                                <span>0</span>
+                            </div>
+                        </div>
+                        Classic:
+                    </div>
+                    <div class="hg-row">
+                        <div class="hg-progress">
+                            <div class="hg-value">
+                                <span>0</span>
+                            </div>
+                        </div>
+                        Arcade:
+                    </div>
+                    <hr>
+                    <div class="hg-row ">
+                        You have played <span class="naughty">0</span> times
+                    </div>
+                    <hr>
+                    <div class="hg-row best-performer" >
+                        <h4>Best performer</h4>
+                        <div style="text-align: center;margin: 20px 0px 3px 0px;">
+                            <img class="best-pic" src="../img/contacts-64.png" />    
+                        </div>
+                        <span class="best-name">-</span>
+                    </div>
+                    <hr>
+                </div>
+                <div class="loading-show">
+                    <div class="navigator">
+
+                        <a href="../home">
+                            <div class="concon">
+                                <img src="icons/links/home-6-64.png">
+
+                            </div>
+                            <div class="hiden">Home</div>
+                        </a>
+                        <a href="../LoginAction?signout=1">
+                            <div class="concon concon-lg">
+                                <img class="lg" src="icons/links/logout-64.png">
+                            </div>
+                            <div class="hiden hiden-lg">Logout</div>
+                        </a>
+                    </div>
+                    <div class="hg-con" style="display: none;">
+                        <div class="hg-img">
+                            <img src="icons/links/medal-64.png" />    
+                        </div>
+
+                        <div class="hg-text">High Scores</div>
+                    </div>
+
+                    <div class="memory_matrix">&nbsp;Memory Matrix&nbsp;</div>
+                    <div class="level_container">
+                        <ul  class="levels">
+                            <li>
+                                <div  class="container_button btnplay">
+                                    <div class="btn3d">
+                                        <img  src="icons/play-128.png" />
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="container_button">
+                                    <div class="btn3d">
+                                        Classic
+                                    </div>
+                                </div> 
+                            </li>
+                            <li>
+                                <div class="container_button">
+                                    <div class="btn3d">
+                                        Arcade
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="container_button">
+                                    <div class="btn3d">
+                                        Practice
+                                    </div>
+                                </div> 
+                            </li>
+                        </ul>
+                    </div>
+
+
+
+                    <div class="container center-align" >
+
+                        <ul class="hangers">
+                            <li>
+                                <div class="container_button">
+                                    <div class="btn3d btn-setting">
+                                        <img class="btn3d-img" src="icons/gear-2-64.png" />
+
+                                    </div>
+                                </div> 
+                                <div class="hangers-help">Settings</div>
+                            </li>
+                            <li>
+                                <div class="container_button">
+                                    <div class="btn3d btn-info">
+                                        <img class="btn3d-img" src="icons/info-3-64.png" />
+
+                                    </div>
+                                </div>
+                                <div class="hangers-help">Instructions</div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="pt-page pt-page-2 ">
+ <!--Game-->
+                <div id="game_progress">
+                    <div class="progressbar">
+                        <div class="bar"><span></span><div class="shiner"></div></div>
+                    </div>
+                </div>
+                <div id="game">
+                    <div class="mm_title">Memory Matrix</div>
+
+                    <div class="container">
+                        <div class="con_cols">
+
+                           
+                            <div class="liferrr">
+                                <div class="life-container"><img src="icons/favorite-2-48.png" /></div>
+                                <div class="life-container"><img src="icons/favorite-2-48.png" /></div>
+                                <div class="life-container"><img src="icons/favorite-2-48.png" /></div>
+                            </div>
+                            <div id="timer">
+                                <div id="counter"></div>
+                            </div>
+                            <div>&nbsp;</div>
+                        </div>
+                        <div class="con_cols-2">
+                            <div class="container_g">
+                                <div class="row"><div class="cols"></div><div class="cols"></div></div>
+                                <div class="row">
+                                    <div class="cols"></div><div class="cols"></div>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                        <div class="con_cols">
+
+                            <div class="animator-imgs">
+                                
+                                <div class="position-setter home">
+                                    <img class="" src="icons/home-6-64.png" style="width: 34px;"/>
+                                    <span>Home</span>
+                                </div>
+
+                            </div>
+                            <div class="animator-imgs">
+                                <div class="position-setter btn-setting">
+                                    <img class="" src="icons/gear-2-64.png" />
+                                    <span>Settings</span>
+                                </div>
+                            </div>
+
+                            <div class="animator-imgs">
+                                <div class="position-setter btn-info">
+                                    <img class="" src="icons/info-3-64.png" />
+                                    <span>Help</span>
+                                </div>
+                            </div>
+                            <div id="ss">
+                                <ul  class="stars">
+                                    <li id="score">0</li>
+                                    <!--                            <li></li>
+                                                                <li></li>
+                                                                <li></li>-->
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="label" >
+                        LEVEL 1
+                    </div>
+                </div>
+                <!--Game Ends-->
+
+
+                <!--DIV HELP STARTS-->
+                
+                <div id="helper">
+                    <img class="help-arrow" src="icons/temp/first.png"/>
+                    <div class="help-msg">Hi <a href="#" class="close-help-first"><img src="icons/temp/arrow-69-16.png" /></a></div>
+                </div>
+                <!--DIV HELP ENDS-->
+
+            </div>
+        </div>
+
+        <div class="modal" id="modal_setting">
+            <div class="btn_close_container">
+                <div class="btn_close">
+                    <div class="btn_close_3d">
+                        <img src="icons/x-mark-3-48.png" />
+                    </div>
+                </div>
+            </div>
+            <div class="con_settings">
+                <div class="rs">
+                    <div class="lbl">
+                        Music
+                    </div>
+                    <div class="slider-frame">
+                        <span class="slider-button">OFF</span>
+                    </div>
+                    <div class="p_con">
+                        <input type="text" class="musiz" data-slider="true" data-slider-range="0,100" data-slider-step="1" value="100" data-slider-highlight="true" data-slider-theme="volume">
+                    </div>
+                </div>
+                <div class="rs">
+                    <div class="lbl">
+                        SFX
+                    </div>
+                    <div class="slider-frame" style="margin-left: 57px;">
+                        <span class="slider-button">OFF</span>
+                    </div>
+                    <div class="p_con">
+                        <input type="text" class="sfx" data-slider="true" data-slider-range="0,100" data-slider-step="1" value="100" data-slider-highlight="true" data-slider-theme="volume">
+                    </div>
+                </div>
+                <div style="font-size: 28px;font-family: xyz;text-align: center;letter-spacing: 6px;color:white;">
+                    <!--About Us-->
+                    &nbsp;
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="modal" id="modal_game">
+            <div class="btn_close_container">
+                <div class="btn_close">
+                    <div class="btn_close_3d">
+                        <img src="icons/x-mark-3-48.png" />
+                    </div>
+                </div>
+            </div>
+            <div class="g-o">
+                Game Over
+            </div>
+            <div id="final-score">
+                Stars earned: 0
+            </div>
+            <div class="loader-con">
+                <div class="loader">
+                    <div class="windows8">
+                        <div class="wBall" id="wBall_1">
+                            <div class="wInnerBall">
+                            </div>
+                        </div>
+                        <div class="wBall" id="wBall_2">
+                            <div class="wInnerBall">
+                            </div>
+                        </div>
+                        <div class="wBall" id="wBall_3">
+                            <div class="wInnerBall">
+                            </div>
+                        </div>
+                        <div class="wBall" id="wBall_4">
+                            <div class="wInnerBall">
+                            </div>
+                        </div>
+                        <div class="wBall" id="wBall_5">
+                            <div class="wInnerBall">
+                            </div>
+                        </div>
+                    </div> 
+                </div>
+                <div class="loading-text">Please wait your score is been submitted</div>
+            </div>
+
+            <div class="btnNew-con" style="text-align: center;margin-top: 30px;display: none;">
+                <div class="home replay-con" style="width: 50%;">
+                    <img src="icons/home-6-64.png" />
+                    <div class="bring-up" style="color: white;font-size: 18pt;">Home</div>
+                </div>
+                <div class="btn-replay replay-con" style="width: 50%;left: 50%;">
+                    <img src="icons/recurring-appointment-64.png" />
+                    <div class="bring-up" style="color: white;font-size: 18pt;">Replay</div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <script src="js/jQuery1.8.3.js"></script>
+        <script src="js/easing.js"></script>
+        <script src="js/bpopup-master/jquery.bpopup.min.js"></script>
+        <script src="js/pie2/jquery.piechartcountdown.min.js"></script>
+        <script src="js/Circ/jQuery.circleMenu_1.js"></script>
+        <script src="js/progress/simple-slider.js"></script>
+        <script src="js/game.js"></script>
+        <script src="js/help.js"></script>
+        <script src="js/base64.js"></script>
+        <script>
+           
+            function loadHighScores(){
+                return 0;
+                $.ajax({
+                    url:'../LoadScoreMM',
+                    type:'POST',
+                    success:function(msg){
+                        if(msg.status=='s'){
+                            //msg.best_user_id
+                            //http://openseesame.tcs.com/OpenIgnite/Portfolio/struts/learn/GetImage.action?usersId=181638&dmns=400
+                            
+                            
+                            $('.hg-row .hg-progress').eq(0).find('.hg-value span').text(msg.classic);
+                            $('.hg-row .hg-progress').eq(1).find('.hg-value span').text(msg.arcade);
+                            
+                            
+                            $('.naughty').text(msg.count);
+                            $('.best-name').css('text-transform', 'capitalize').text(msg.best_name.toLowerCase());  
+                           if(msg.best_user_id!='-'&& msg.reqst!='-'){
+                                $('.best-pic').attr('src','http://openseesame.tcs.com/OpenIgnite/Portfolio/struts/common/GetImage.action?usersId='+msg.best_user_id+'&dmns=140&reqst='+msg.reqst);    
+                            }
+                        }else{
+                            $('.hg-con').addClass('hide');  
+                        }
+                    }
+                });
+            }
+            loadHighScores();
+            $('.hg-con').click(function(){
+                $('.hg-con').addClass('hide');
+                $('.high-score').addClass('active');
+            });
+            $('.hg-close').click(function(){
+                $('.hg-con').removeClass('hide');
+                $('.high-score').removeClass('active');
+            });
+            
+            $(document).ready(function(){
+                setTimeout(function(){
+                    $('body').addClass('active');
+                    setTimeout(function(){
+                        $('.loading-show').fadeIn('fast');
+                        adjust();
+                    }, 500);
+                },2000);
+                    
+                $(window).resize(function () {
+                    /* do something */ 
+                    adjust();
+                }); 
+               
+            });
+            
+            function adjust(){
+                var windowheight = $('.pt-page-2').height();
+                var windowwidth = $('.pt-page-2').width();
+                var pagecenterW = windowwidth/2;
+                var pagecenterH = windowheight/2;
+                $("#game").css({
+                    top: pagecenterH-254 + 'px',
+                    left:pagecenterW-400 +'px'
+                });
+                $("#game_progress").css({'top': pagecenterH-304 + 'px',left:pagecenterW-400 +'px'}); 
+            }
+            $('.levels').circleMenu({
+                direction:'top', 
+                trigger:'click',
+                speed:400,
+                step_in:70,
+                step_out:60,
+                circle_radius:180,
+                open: function(){
+                    //console.log('menu opened');
+                },
+                close: function(){
+                   
+                    //                        console.log('menu closed');
+                },
+                init: function()
+                {
+                    //                        console.log('menu initialized');
+                },
+                select: function(evt,index)
+                {
+                    //                        console.log(index);
+                }
+            });
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            $('.btn_close_3d').click(function(){
+                $(this).closest('.modal').bPopup().close();
+            });
+            
+            $('.btn-info').click(function(e){
+               
+                setTimeout(startInstruction, 300);
+                
+            });
+            $('.btn-setting').click(function(e){
+                $('#modal_setting').bPopup({
+                    easing: 'easeOutBounce', //uses jQuery easing plugin
+                    speed: 900,
+                    transition: 'slideDown'
+                });
+            });
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+            var musiz=document.createElement('audio');
+            var effx=document.createElement('audio');
+            if(effx.canPlayType('audio/mp3')){
+                effx.src='sound/2.wav';
+            }else if(musiz.canPlayType('audio/ogg')){
+                effx.src='sound/2.ogg';
+            }
+            //            effx.setAttribute('loop','1');
+            effx.volume=1;
+                
+            $('body').append(musiz);
+            $('body').append(effx);
+            function playAudio(){
+                if(musiz.canPlayType('audio/mp3')){
+                    musiz.src='sound/1.ogg';
+                }else if(musiz.canPlayType('audio/ogg')){
+                    musiz.src='sound/1.ogg';
+                }
+                musiz.setAttribute('loop','loop');
+                musiz.volume=1;
+                musiz.play();
+            }
+            
+            function playEffect(){
+                if(effx_flag){
+                    if(effx.canPlayType('audio/mp3')){
+                        effx.src='sound/2.wav';
+                    }else if(musiz.canPlayType('audio/ogg')){
+                        effx.src='sound/2.ogg';
+                    }
+                    effx.play();
+                }
+                
+            }
+            
+            $("[data-slider]")
+            .each(function () {
+                var input = $(this);
+                $("<span>")
+                .addClass("output")
+                .insertAfter($(this));
+            })
+            .bind("slider:ready slider:changed", function (event, data) {
+                $(this)
+                .nextAll(".output:first")
+                .html(data.value.toFixed(0));
+                if($(this).hasClass('musiz')){
+                    musiz.volume=data.value.toFixed(0)/100;
+                }
+                if($(this).hasClass('sfx'))
+                {
+                    effx.volume=data.value.toFixed(0)/100;
+                }
+            });
+            
+            var effx_flag=false;
+            $('.slider-button').click(function(){
+                if($(this).hasClass('on')){
+                    $(this).closest('.rs').find('.p_con').css('display', 'none');
+                    if($(this).closest('.rs').index()==0){
+                        musiz.pause();
+                    }
+                    if($(this).closest('.rs').index()==1){
+                        effx_flag=false;
+                    }
+                    
+                    
+                    $(this).removeClass('on').html('OFF');   
+                }else{
+                    $(this).closest('.rs').find('.p_con').css({'display':'inline'});
+                    if($(this).closest('.rs').index()==0){
+                        playAudio();
+                    }
+                    if($(this).closest('.rs').index()==1){
+                        effx_flag=true;
+                    }
+                    
+                    $(this).addClass('on').html('ON');
+                }
+                
+            });
+            
+            $('.slider-button').eq(0).click();
+            $('.slider-button').eq(1).click();
+            $('audio').eq(0).on('canplay canplaythrough', function(){
+              
+            });
+        </script>
+    </body>
+</html>

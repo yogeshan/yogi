@@ -1,0 +1,98 @@
+.gamebox{border:5px solid #e0e0e0;background:rgba(0,0,0,0.7);height:500px;position:relative;overflow:hidden}
+.bgrd{background:radial-gradient(ellipseatcenter,#497fd 90%,#0b4f96 100%);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#497fd9',endColorstr='#0b4f96',GradientType=1)}
+.box.blow{animation-iteration-count:1;-webkit-animation:blow 1s normal;-webkit-animation-iteration-count:1;-moz-animation:blow 1s normal;-moz-animation-iteration-count:1}
+100%{transform:scale(2);opacity:0}
+100%{top:24px;left:0;-moz-transform:rotate(360deg);transform:translateY(-150%);opacity:0;visibility:visible;-webkit-transform:rotate(180deg)}
+.mainmenu,.gamemenu{color:#fff;position:absolute;text-align:center;width:100%;bottom:-165px}
+.gamemenu{bottom:18px}
+.set,.exit,.sound{float:left!important;color:#fff;border:2px solid #fff;border-radius:100%;margin-left:36%;cursor:pointer;padding:8px 15px}
+.exit{padding:8px 10px}
+.sound i{position:relative;top:5px}
+.vol-state{position:relative;border:1px solid #fff;background:#138D13;border-radius:100%;top:25px;left:-16px;padding:2px}
+.vol-state i{opacity:0.3}
+.set:hover,.exit:hover,.sound:hover{animation-iteration-count:1;-webkit-animation:rotate 1.5s normal;-webkit-animation-iteration-count:1;-moz-animation:rotate 1.5s normal;-moz-animation-iteration-count:1}
+.play{border-radius:13px;border:2px solid #F8F8F8;min-width:80px;max-width:80px;background:#3567B3;max-height:84px;overflow:hidden;cursor:pointer;margin:auto;padding:9px 0}
+.play:hover{background:rgba(0,0,0,0.1)}
+.play:hover .plic{position:relative;-webkit-animation:plicn .5s normal;-webkit-transition-timing-function:cubic-bezier(0.4,0.3,0.58,0.4);-moz-animation:plicn .5s normal;-moz-transition-timing-function:cubic-bezier(0.4,0.3,0.58,0.4)}
+.play:hover .pltx{position:relative;animation-iteration-count:1;-webkit-animation:pltxt .75s infinite;-webkit-animation-iteration-count:1;-moz-animation:pltxt .75s infinite;-moz-animation-iteration-count:1}
+25%{top:24px;opacity:0.2;transform:translateY(300%)}
+50%{top:-25px;opacity:0.4;transform:translateX(-300%);visibility:visible;-webkit-transform:rotate(0)}
+75%{top:25px;-webkit-transform:translateX(-765%);-moz-transform:translateX(-765%);opacity:1;transform:translateY(-150%)}
+.exit,.sound{font-size:24pt}
+.exit img{height:18px;width:18px;position:relative;top:-2px}
+.menu{margin-bottom:0}
+.menu .menu-item{float:left!important;color:#fff;border:2px solid #fff;background:#1C5CA8;border-radius:100%;margin-left:15px;cursor:pointer;opacity:0;position:absolute;top:0;left:7px;padding:10px}
+.menu .menu-item.thumb{opacity:1}
+.menu li .menu-item.setting.openenav{animation:setting .75s 1;animation-iteration-count:1;-webkit-animation:setting .75s 1;-webkit-animation-iteration-count:1;-webkit-animation-fill-mode:forwards;-moz-animation:setting .75s 1;-moz-animation-iteration-count:1;-moz-animation-fill-mode:forwards}
+.menu li .menu-item.howto.openenav{animation:howto .75s 1;animation-iteration-count:1;-webkit-animation:howto .75s 1;-webkit-animation-iteration-count:1;-webkit-animation-fill-mode:forwards;-moz-animation:howto .75s 1;-moz-animation-iteration-count:1;-moz-animation-fill-mode:forwards}
+.menu li .menu-item.sound.openenav{animation:sound .75s 1;animation-iteration-count:1;-webkit-animation:sound .75s 1;-webkit-animation-iteration-count:1;-webkit-animation-fill-mode:forwards;-moz-animation:sound .75s 1;-moz-animation-iteration-count:1;-moz-animation-fill-mode:forwards}
+to{top:-50px;opacity:1;-webkit-transform:rotate(360deg)}
+.ansbox input[type=text]{font-size:20pt;height:40px;margin-bottom:0}
+.score{color:#fff;font-size:15pt;padding:20px 5px}
+.score span{z-index:3;border:2px solid;border-radius:5px;background:#2C61AD;padding:7px 5px}
+.score span img{height:22px;width:22px;position:relative;left:2px;top:-2px}
+.score span #dscr{border:none}
+.ra .ric{background:#178B25;border:2px solid #B2EBA8;border-radius:100%;display:none;border-color:rgba(255,255,255,0.2);padding:7px 9px}
+.ric.check{display:block;animation:right 2s 1;animation-iteration-count:1;-webkit-animation:right 2s 1;-webkit-animation-iteration-count:1;-webkit-animation-fill-mode:forwards}
+20%{transform:translateX(260%);-moz-transform:translateX(260%);-webkit-transform:translateX(10%) translateY(10%)}
+60%{transform:translateX(0%);-webkit-transform:translateX(4%) translateY(20%)}
+80%{transform:translateX(-765%);-webkit-transform:translateX(12%) translateY(-15%)}
+76%{-webkit-transform:translateX(0%) scale(1);-moz-transform:translateX(0%) scale(1);opacity:0}
+85%{-webkit-transform:scale(1.8);-moz-transform:scale(1.8)}
+.wa .wic{background:#D34A15;border:2px solid #E4AC92;border-radius:100%;display:none;border-color:rgba(255,255,255,0.3);padding:7px 9px}
+.wa .wic img{height:18px;width:18px}
+.wa .wic.check{display:block;animation:wrong 2s 1;animation-iteration-count:1;-webkit-animation:wrong 2s 1;-webkit-animation-iteration-count:1;-webkit-animation-fill-mode:forwards;-moz-animation:wrong 2s 1;-moz-animation-iteration-count:1;-moz-animation-fill-mode:forwards}
+.num-wrap .row-fluid .span3{text-align:center;padding-top:30px}
+.sltr1{font-size:19pt;color:red;-webkit-transform:translate(13px) rotate(13deg)}
+.sltr2{font-size:21pt;color:#FFEB00;-webkit-transform:translate(-9px) rotate(-30deg)}
+.sltr3{-webkit-transform:rotate(-20deg);font-size:23pt;color:#94DD26}
+.rotating{-webkit-animation:rotate 1s linear infinite;-webkit-transform-origin:56% 56%;-moz-animation:rotate 1s linear infinite;-moz-transform-origin:56% 56%}
+.display{text-align:center;margin:11px 0}
+.box{padding:16px 0}
+.box span{border-radius:100%;background:rgba(255,255,255,0.2);border:1px solid rgba(255,255,255,0.4);padding:5px 13px}
+.question{padding-top:23px;padding-bottom:10px;text-align:center;color:#fff;font-size:18pt}
+.answer{border-radius:2px!important;border:1px solid #3b94ed!important}
+.right{background:#11aaab;color:#fff;font-size:15pt;text-align:center;display:none;padding:11px}
+.wrong{background:#C9131A;color:#fff;font-size:15pt;text-align:center;display:none;padding:11px}
+.move{-webkit-animation:move 2s linear alternate infinite}
+10%{-webkit-transform:translateX(-15%) translateY(20%)}
+30%{-webkit-transform:translateX(-15%) translateY(-20%);opacity:0.4}
+40%{-webkit-transform:translateX(-8%) translateY(20%)}
+70%{-webkit-transform:translateX(-15%) translateY(8%)}
+90%{-webkit-transform:translateX(-15%) translateY(-6%)}
+.qsbox{text-align:center;color:#fff;border-bottom:1px solid rgba(0,0,0,0.13)}
+.qsbox .corners{padding-top:19px;font-size:19pt;background:rgba(0,0,0,0.1);padding-bottom:17px;border-bottom:3px solid rgba(0,0,0,0.1)}
+.s1.mainopen{-webkit-animation:mainopen 1s linear;-webkit-animation-fill-mode:forwards;z-index:5}
+.s1.mainclose{-webkit-animation:mainclose 1.4s linear;-webkit-animation-fill-mode:forwards;-webkit-transform-origin:50% 50%;-webkit-backface-visibility:hidden;z-index:0}
+.s2.opengame{display:block;opacity:1;-webkit-animation:opengame .8s linear;-webkit-animation-fill-mode:forwards;z-index:5}
+.s2.closegame{display:block;opacity:1;z-index:0;-webkit-animation:closegame 1s linear;-webkit-animation-fill-mode:forwards}
+.s1,.s2,.s3{height:500px;position:relative}
+.mainscreen{position:relative;display:inline-block;width:100%}
+.s3{background:rgba(0,0,0,0.5);z-index:5}
+.s3.nbg{background:rgba(0,0,0,0)}
+.howtoplay{color:#fff}
+.howtoplay .info{font-size:17px;padding:0 8px}
+.howtoplay .title{text-align:center;font-size:18px;font-weight:700;box-shadow:1px 11px 24px -16px rgba(255,255,255,0.5);margin-bottom:15px;padding:12px 0}
+.howtoplay .title i{opacity:0.4;position:relative;left:-10px}
+.howtoplay .title i:hover{opacity:0.7;cursor:pointer}
+.howtoplay ul{list-style-type:none;margin:0}
+.howtoplay ul li{line-height:28pt}
+.s3.open{-webkit-animation:opens3 1s linear;-webkit-animation-iteration-count:1;-webkit-animation-fill-mode:forward}
+.gtitle.shift{-webkit-animation:shifttitle 1s linear;-webkit-animation-iteration-count:1;-webkit-animation-fill-mode:forward}
+.s3.closes3{-webkit-animation:hides3 1s linear;-webkit-animation-iteration-count:1;-webkit-animation-fill-mode:forward}
+.gtitle.shiftb{-webkit-animation:shiftbtitle 1s linear;-webkit-animation-iteration-count:1;-webkit-animation-fill-mode:forward}
+.gtitle.fixit{-webkit-transform:translateY(-55%)}
+.s3.fixit{-webkit-transform:translateY(-50%)}
+.gameover{color:#fff;position:relative;top:8%;text-align:center;font-size:37px;font-weight:700;background:rgba(0,0,0,0.2);padding:43px 0}
+.gameover a{color:#fff;text-decoration:none;margin-left:4px;background:none;border:none;cursor:pointer;padding:6px 9px}
+.gameover a:hover{opacity:0.8;background:rgba(0,0,0,0.3);border-radius:11px}
+#timer{height:35px;position:relative;background:#fff;width:35px;float:right;right:33%;border-radius:100%;border:1px solid #e0e0e0;top:6px}
+.circle{border-radius:50%;bottom:1px;left:1px;position:absolute;right:1px;top:1px}
+#color-left{z-index:2;-webkit-transform:rotate(180deg)}
+#color-right{z-index:3}
+#cover{z-index:4;background:0;bottom:0;left:0;right:0;top:0;visibility:hidden}
+.color.colorit{background:0}
+#cover,#color-left{-webkit-animation-duration:60s;-webkit-animation-iteration-count:infinite;-webkit-animation-timing-function:linear}
+#cover.startpie{-webkit-animation-name:firstspin;-webkit-animation-iteration-count:1}
+#color-left.startpie{-webkit-animation-name:secondspin;-webkit-animation-iteration-count:1}
+.ra,.wa{z-index:1;padding-top:11px;color:#fff}

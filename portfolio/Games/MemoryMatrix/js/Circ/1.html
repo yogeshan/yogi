@@ -1,0 +1,126 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <style>
+
+            ul.circleMenu-closed {background-color: red;}  
+            ul.circleMenu-open {background-color: green;}
+            #x{
+                width: 300px;
+                height: 300px;
+            }
+            #menux{
+                top:300px;
+                left:300px;
+            }
+            .menu{
+                position: relative;
+            }
+            .menu li:first-child {
+                background:#f00;
+                font-weight:bold;
+                font-family:arial black;
+
+                border-color: #fff;
+                border-width: 2px;
+                border-style: solid;
+                box-shadow: 0 0 2px 1px #aaa;
+            }
+            .menu li {
+                background: url('1.png');
+                background-size: 100%;
+            }
+
+        </style>
+    </head>
+    <body>
+
+        <div id="x">
+            <ul id="menux" class="menu">
+                <li id="score">10</li>
+                <!--                <li></li>
+                                <li></li>
+                                <li></li>-->
+
+            </ul>
+        </div>
+
+        <button id="o">Open</button>
+        <button id="c">Close</button>
+        <button id="a">Append</button>
+        <script src="../../js/jQuery1.8.3.js"></script>
+        <script src="jQuery.circleMenu.js"></script>
+        <script>
+          
+            
+            $('#o').click(function(){
+                var x=getRandomInt(0, 2);
+                if(x==0){
+                    $('#menux').append($('<li></li><li></li><li></li>')).circleMenu('init');
+                }else{
+                    if(x==1){
+                        $('#menux').append($('<li></li><li></li><li></li><li></li>')).circleMenu('init');
+                    }else{
+                        $('#menux').append($('<li></li><li></li><li></li><li></li><li></li>')).circleMenu('init');
+                    }
+                }
+                
+                
+                
+                
+                $('#menux').circleMenu('open');
+                setTimeout("$('#menux').circleMenu('close');",1000);
+            });
+            $('#c').click(function(){
+                $('#menux').circleMenu('close');
+            });
+            
+            
+            
+            
+            $('#menux').circleMenu({
+                direction:'top', 
+                trigger:'click',
+                speed:400,
+                step_in:60,
+                step_out:60,
+                circle_radius:40,
+                
+                open: function(){console.log('menu opened');},
+                close: function(){
+                    var cnt=$('#menux').find('li').length-1;
+                    $('#score').text(eval($('#score').text())+cnt);
+                    $('#menux').children().eq(0).nextAll().remove();
+                    console.log('menu closed');
+                },
+                init: function()
+                {
+                    console.log('menu initialized');
+                },
+                select: function(evt,index)
+                {
+                    console.log(index);
+                }
+            }).on('circleMenu-open',function(){
+                console.log('menu opened 2');
+            });
+            
+
+            //            
+            //            $('#menux').append($('<li><a href="#">New</a></li>')).circleMenu('init');
+            //            $('#menux').circleMenu({direction:'top-half'});
+            //            $('#menux').circleMenu('open');
+            //            $('#menux').circleMenu('close');
+            function getRandomInt(min, max)
+            {
+                return Math.floor(Math.random() * (max - min + 1)) + min;
+            }
+        </script>
+    </body>
+</html>

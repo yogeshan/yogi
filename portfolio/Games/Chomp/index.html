@@ -1,0 +1,918 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Chomp</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="css/button.css" />
+        <link rel="stylesheet" href="css/radio.css" />
+        <link rel="stylesheet" href="js/progress/simple-slider.css" />
+        <link rel="stylesheet" href="js/progress/simple-slider-volume.css" />
+        <link rel="stylesheet" href="css/loader_small.css" />
+        <link rel="stylesheet" href="js/CustomScroll/jquery.mCustomScrollbar.css" />
+        <link rel="stylesheet" href="css/game.css" />
+        <style>
+            .btn{
+                border: 2px solid white;
+                background: none;
+                cursor: pointer;
+                padding: 4px 9px;
+                display: inline-block;
+                margin-top: 2px;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                outline: none;
+                position: relative;
+                -webkit-transition: all 0.3s;
+                -moz-transition: all 0.3s;
+                transition: all 0.3s;
+                color: white;
+            }
+            .btn:hover{
+                background: #1A4DA8;
+            }
+            .btn.btn-yes{
+                margin-right: 6px;
+            }
+            .confirmation{
+                display: none;
+                min-height: 30px;
+                width: 30%;
+
+                font-size: 14px;
+                color:white;
+                line-height: 31px;
+
+                letter-spacing: 1px;
+                text-shadow: 0px 0px 1px white;
+
+                background: rgba(0, 0, 0, 0.7);
+                border: 2px solid white;
+                padding: 6px;
+
+                position: absolute;
+                top: 47%;
+                left: 35%;
+
+
+                -webkit-transition: all 0.3s ease-out;
+                -moz-transition: all 0.3s ease-out;
+                transition: all 0.3s ease-out;
+                z-index: 1001;
+            }
+            .confirmation.active{
+                display: block;
+            }
+            .btn-box{
+                float: right;
+            }
+            .container_button a{
+                text-decoration: none;
+                color: white;
+            }
+        </style>
+
+    </head>
+    <body>
+        <div class="navigator">
+
+            <a href="#">
+                <div class="concon">
+                    <img src="icons/links/home-6-64.png">
+
+                </div>
+                <div class="hiden">Home</div>
+            </a>
+            <a href="#">
+                <div class="concon concon-lg">
+                    <img class="lg" src="icons/links/logout-64.png">
+                </div>
+                <div class="hiden hiden-lg">Logout</div>
+            </a>
+        </div>
+        <div id="clouds">
+            <div class="cloud x1"></div>
+            <!-- Time for multiple clouds to dance around -->
+            <div class="cloud x2"></div>
+            <div class="cloud x3"></div>
+            <div class="cloud x4"></div>
+            <div class="cloud x5"></div>
+        </div>
+
+        <div class="content">
+
+            <!--            <div id="dark">
+                            <form method="get" action="/search" id="search">
+                                <input name="q" type="text" size="40" placeholder="Search..." />
+                            </form>
+                        </div>-->
+
+
+
+            <div class="level_container">
+                <ul  class="levels">
+                    <li>
+                        <div  class="container_button btnplay">
+                            <div class="btn3d">
+                                <img  src="icons/play-128.png" />
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <ul  class="submenu">
+                            <li>
+                                <div class="container_button">
+                                    <div class="btn3d">
+                                        Computer
+                                    </div>
+                                </div> 
+                            </li>
+                            <li>
+                                <div class="container_button">
+                                    <a href="Easy.html">
+                                        <div class="btn3d">
+                                            Easy
+                                        </div>
+                                    </a>
+                                </div> 
+                            </li>
+                            <li>
+                                <div class="container_button">
+                                    <a href="Medium.html">
+                                        <div class="btn3d">
+                                            Medium
+                                        </div>
+                                    </a>
+                                </div> 
+                            </li>
+                            <li>
+                                <div class="container_button">
+                                    <a href="Hard.html">
+                                        <div class="btn3d">
+                                            Hard
+                                        </div>
+                                    </a>
+                                </div> 
+                            </li>
+                        </ul>
+
+                    </li>
+                    <li>
+                        <div class="container_button righty">
+                            <div class="btn3d vs-player">
+                                Player
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="container" style="position: relative;top: -62px;text-align: center">
+
+                <ul class="hangers">
+                    <li>
+                        <div class="container_button">
+                            <div class="btn3d" id="btn-setting">
+                                <img class="btn3d-img" src="icons/gear-2-64.png" />
+                            </div>
+                        </div>        
+                    </li>
+                    <li>
+                        <div class="container_button">
+
+                            <div class="btn3d" id="btn-info">
+                                <img class="btn3d-img" src="icons/info-3-64.png" />
+                            </div>
+
+                        </div>
+                    </li>
+                </ul>
+
+
+            </div>
+            <div id="banner">
+                <canvas id="canvas-banner"></canvas>
+            </div>
+
+
+        </div>
+
+        <style>
+
+            .users-container{
+                width: 250px;
+                position: absolute;
+                right: -262px;
+                top: 0%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.7);
+                -webkit-transition: all .2s ease-in;
+            }
+            .users-container.active{
+                right: 0px;
+            }
+            .ol-users{
+                overflow: auto;
+                height: 100%;
+            }
+            .user{
+                color: white;
+                line-height: 40px;
+
+                border-bottom: 1px solid #444;
+
+                transition: all 0.4s ease;
+                -webkit-transition: all 0.4s ease;
+                letter-spacing: 2px;
+                cursor: pointer;
+            }
+            .user img{
+                width: 34px;
+                vertical-align: middle;
+                border: 1px solid;
+                padding: 4px;
+                background: #444;
+                margin-right: 7px;
+            }
+            .user:hover{
+                background: rgba(0, 0, 0, 0.8);
+                border:1px solid green;
+            }
+            .user-title{
+
+                color: #BBB;
+                line-height: 40px;
+                text-shadow: 0 2px 2px rgba(105, 105, 105, 0.71);
+                border-bottom: 1px solid #444;
+                background: rgba(0, 0, 0, 0.7);
+                transition: all 0.4s ease;
+                letter-spacing: 2px;
+                text-align: center;
+                min-height: 80px;
+                position: absolute;
+                width: 100%;
+                z-index: 3;
+            }
+            .ol-status{
+                float: right;
+                height: 10px;
+                width: 10px;
+                border-radius: 10px;
+                margin-top: 17px;
+                margin-right: 20px;
+                box-shadow: 0px 0px 0px 3px rgba(0, 0, 0, 0.3);
+                background: #DDDDDD;
+            }
+            .ol-status.active{
+                background: lime;
+            }
+            .ol-status.busy{
+                background: yellow !important;
+            }
+            .ol-users .mCSB_container{
+                margin-right: 0px;
+            }
+
+            .dark {
+                margin-top:-6px;
+            }
+
+
+
+            .dark  input[type="text"] {
+                outline: none;
+                background: url('icons/search/search-dark.png') no-repeat 10px 6px #444;
+                border: 0 none;
+                font: bold 12px Arial,Helvetica,Sans-serif;
+                color: #AAA;
+                width: 60px;
+                padding: 6px 15px 6px 35px;
+                -webkit-border-radius: 20px;
+                -moz-border-radius: 20px;
+                border-radius: 20px;
+                text-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
+                -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 3px rgba(0, 0, 0, 0.2) inset;
+                -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 3px rgba(0, 0, 0, 0.2) inset;
+                box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 3px rgba(0, 0, 0, 0.2) inset;
+                -webkit-transition: all 0.7s ease 0s;
+                -moz-transition: all 0.7s ease 0s;
+                -o-transition: all 0.7s ease 0s;
+                transition: all 0.7s ease 0s;
+            }
+
+            .dark  input[type="text"]:focus {
+                width: 150px;
+            }
+
+            .user-ol-msg,.no-user{
+                color: white;
+                line-height: 40px;
+                border-bottom: 1px solid #444;
+                letter-spacing: 1px;
+            }
+            .no-user{text-align: center;}
+            .loading-container{
+                float:left;
+                margin-left: 13px;
+                margin-right: 20px;
+                width: 25px;
+                height: 25px;
+                margin-top: 8px;
+            }
+        </style>
+        <div class="confirmation">
+            <div class="btn-box">
+                <button class="btn btn-yes">Yes</button>
+                <button class="btn btn-no">No</button>
+            </div>
+            Do you want to send request to yogesh?
+        </div>
+        <div class="users-container">
+            <div class="user-title">
+                Online Users
+                <div class="dark">
+                    <input id="txtsearch" name="q" type="text" size="40" placeholder="Search..." />
+                </div>
+            </div>
+            <div style="position: absolute;width: 100%;top: 80px;bottom: 0px;">
+                <div class="ol-users">
+
+                    <div class="holder">
+                        <!--                        <div class="user" data-email="'+r.k+'" data-name="Rakesh"><img src="icons/contacts-64.png"/> Rakesh<span class="ol-status active"></span></div>
+                                                <div class="user" data-email="'+r.k+'" data-name="Rakesh"><img src="icons/contacts-64.png"/> Yogesh<span class="ol-status active"></span></div>
+                                                <div class="user" data-email="'+r.k+'" data-name="Rakesh"><img src="icons/contacts-64.png"/> Manish<span class="ol-status active"></span></div>-->
+                        <div class="no-user">No user found online</div>
+                    </div>
+                    <div class="user-ol-msg" style="display: none;">
+                        <div class="loading-container">
+                            <div class="windows8">
+                                <div class="wBall" id="wBall_1">
+                                    <div class="wInnerBall">
+                                    </div>
+                                </div>
+                                <div class="wBall" id="wBall_2">
+                                    <div class="wInnerBall">
+                                    </div>
+                                </div>
+                                <div class="wBall" id="wBall_3">
+                                    <div class="wInnerBall">
+                                    </div>
+                                </div>
+                                <div class="wBall" id="wBall_4">
+                                    <div class="wInnerBall">
+                                    </div>
+                                </div>
+                                <div class="wBall" id="wBall_5">
+                                    <div class="wInnerBall">
+                                    </div>
+                                </div>
+                            </div> 
+                        </div>
+                        Refreshing. . .
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+
+        <div class="modal" id="modal_setting">
+            <div class="btn_close_container">
+                <div class="btn_close">
+                    <div class="btn_close_3d">
+                        <img src="icons/x-mark-3-48.png" />
+                    </div>
+                </div>
+            </div>
+            <div class="con_settings">
+                <div class="rs">
+                    <div class="lbl">
+                        Music
+                    </div>
+                    <div class="slider-frame">
+                        <span class="slider-button">OFF</span>
+                    </div>
+                    <div class="p_con">
+                        <input type="text" class="musiz" data-slider="true" data-slider-range="0,100" data-slider-step="1" value="40" data-slider-highlight="true" data-slider-theme="volume">
+                    </div>
+                </div>
+                <div class="rs">
+                    <div class="lbl">
+                        SFX
+                    </div>
+                    <div class="slider-frame" style="margin-left: 57px;">
+                        <span class="slider-button">OFF</span>
+                    </div>
+                    <div class="p_con">
+                        <input type="text" class="sfx" data-slider="true" data-slider-range="0,100" data-slider-step="1" value="40" data-slider-highlight="true" data-slider-theme="volume">
+                    </div>
+                </div>
+                <div style="font-size: 28px;font-family: xyz;text-align: center;letter-spacing: 6px;color:white;">
+                    About Us
+                </div>
+            </div>
+        </div>
+
+
+        <div class="modal" id="modal_inst">
+            <div class="btn_close_container">
+                <div class="btn_close">
+                    <div class="btn_close_3d">
+                        <img src="icons/x-mark-3-48.png" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="inst-content">
+                <style>
+                    .inst-content{
+                        padding: 0px 10px 0px 22px;
+                        color: white;
+                    }
+                    .inst-title{
+                        font-family: 'sancreek';
+                        text-align: center;
+                        color: rgba(0, 0, 0, 0.4);
+                        font-size: 30pt;
+
+                        margin: 10px 0px 10px 0px;
+                        padding-bottom: 5px;
+                        border-bottom: 2px solid rgba(0, 0, 0, 0.3);
+                    }
+                    .inst-row{
+                        letter-spacing: 0.5px;
+                        font-size: 14px;
+                        margin-bottom: 10px;
+                        padding-bottom: 5px;
+                        border-bottom: 2px solid rgba(0, 0, 0, 0.3);
+                        text-align: left;
+                    }
+                    .inst-last{
+                        font-family: 'sancreek';
+                        text-align: center;
+                        color: rgba(0, 0, 0, 0.4);
+                        font-size: 30pt;
+                        margin-top: 15px;
+                    }
+                    .evil-pump{
+                        text-align: center;
+                    }
+                    .evil-pump img{
+                        opacity: 0.4;
+                        width: 70px;
+                    }
+                </style>
+                <div class="inst-title">How to play?</div>
+
+                <div class="inst-row">You chomp on a fruit by clicking on the fruit with the mouse.</div>
+                <div class="inst-row">A move consists of chomping a square out of the fruits along with any squares to the right and above.</div>
+                <div class="inst-row">The lower left fruit is poisoned pumpkin and the player forced to chomp it loses.</div>
+                <div class="inst-row">Players move alternately.</div>
+                <div class="inst-row">You can win from the initial position, but be careful! </div>
+                <div class="inst-last">All the best!!</div>
+                <div class="evil-pump"><img src="icons/temp/evil.png" /></div>
+            </div>
+
+        </div>
+
+
+
+        <script src="js/jQuery1.8.3.js"></script>
+        <script src="js/easing.js"></script>
+        <script src="js/bpopup-master/jquery.bpopup.min.js"></script>
+        <script type="text/javascript" src="js/banner3.js"></script>
+        <script src="js/progress/simple-slider.js"></script>
+        <script src="js/Circ/jQuery.circleMenu_1.js"></script>
+        <script src="js/CustomScroll/jquery.mCustomScrollbar.concat.min.js"></script>
+        <script type="text/javascript">
+
+            var poppedWindow1;
+            function openNewWindow(){
+                clearTimeout(secondPlayerAcceptedTimer);
+                poppedWindow1=window.open("Online.html","_blank","fullscreen=yes,toolbar=no, scrollbars=yes, resizable=no,location=no,menubar=no,titlebar=no,status=no");
+                if(_hasPopupBlocker(poppedWindow1)){
+                    alert('You have a pop up block. Kindly enable pop ups. or go to "Online.html"');
+                }else{
+                  
+                }
+            }
+            
+            
+            function _hasPopupBlocker(poppedWindow) {
+                var result = false;
+
+                try {
+                    if (typeof poppedWindow == 'undefined') {
+                        // Safari with popup blocker... leaves the popup window handle undefined
+                        result = true;
+                    }
+                    else if (poppedWindow && poppedWindow.closed) {
+                        // This happens if the user opens and closes the client window...
+                        // Confusing because the handle is still available, but it's in a "closed" state.
+                        // We're not saying that the window is not being blocked, we're just saying
+                        // that the window has been closed before the test could be run.
+                        result = false;
+                    }
+                    else if (poppedWindow) {
+                        // This is the actual test. The client window should be fine.
+                        result = false;
+                    }
+                    else {
+                        // Else we'll assume the window is not OK
+                        result = true;
+                    }
+
+                } catch (err) {
+                    if (console) {
+                        console.warn("Could not access popup window", err);
+                    }
+                }
+
+                return result;
+            }
+
+            //*************************Window END
+
+
+
+
+
+
+            $('#txtsearch').keyup(function(){
+                //                console.log($(this).val());
+                var str=$(this).val().toLowerCase();
+                $('.user').show();
+                $('.user').each(function(){
+                    if($(this).text().toLowerCase().indexOf(str)!=-1){
+                        
+                    }else{
+                        $(this).hide();
+                    }
+                });
+            });
+
+
+
+
+
+
+
+//            var getOlUserTimer=setInterval(getOnlineUsers, 5000);
+            function getOnlineUsers(){
+                $('.user-ol-msg').fadeIn();
+                $('.no-user').remove();
+                $.ajax({
+                    url:'GetOnlineUsers',
+                    type:'POST',
+                    success:function(data){
+                        if(data.status=='e'){
+                            //                            alert('Something went wrong');
+                            clearTimeout(getOlUserTimer);
+                        }else if(data.status=='se'){
+                            //                            alert('session');
+                        }else if(data.status=='f'){
+                            alert(data.msg);
+                        }else if(data.status=='s'){
+                            $('.user-ol-msg').fadeOut();
+                            var html=''
+                            $('.ol-users .ol-status').removeClass('active');
+                            for (i = 0; i < data.users.length; i++) {
+                                var best_name=data.users[i].name;
+                                if (best_name.length > 15) {
+                                    var arr = best_name.split(" ");
+                                    if (arr.length > 1) {
+                                        best_name = arr[0];
+                                        if (best_name.length <= 1) {
+                                            if (arr.length >= 2) {
+                                                best_name = arr[0] + " " + arr[1];
+                                            }
+                                        }
+                                    }
+                                }
+                                if(data.users[i].u!=null){
+                                    html='<div class="user " data-email="'+data.users[i].email+'" data-name="'+data.users[i].name+'">'+
+                                        '<img src="http://openseesame.tcs.com/OpenIgnite/Portfolio/struts/common/GetImage.action?usersId='+data.users[i].u+'&dmns=140&reqst='+data.users[i].reqst+'"/> '+best_name+'<span class="ol-status active"></span>'+
+                                        '</div>';
+                                    
+                                }else{
+                                    html='<div class="user " data-email="'+data.users[i].email+'" data-name="'+data.users[i].name+'">'+
+                                        '<img src="icons/contacts-64.png"/> '+best_name+'<span class="ol-status active"></span>'+
+                                        '</div>';
+                                    
+                                }
+                                
+                                
+                                
+                                if($('.ol-users .user[data-email="'+data.users[i].email+'"]').length==0){
+                                    $('.ol-users .holder').append(html);
+                                    $(".ol-users").mCustomScrollbar("update");
+                                }else if($('.ol-users .user[data-email="'+data.users[i].email+'"]').length==1){
+                                    $('.ol-users .user[data-email="'+data.users[i].email+'"]').find('.ol-status').addClass('active');
+                                }
+                                
+                                if(data.users[i].is_busy=='1'){
+                                    $('.ol-users .user[data-email="'+data.users[i].email+'"]').find('.ol-status').addClass('busy');
+                                }else{
+                                    $('.ol-users .user[data-email="'+data.users[i].email+'"]').find('.ol-status').removeClass('busy');
+                                }
+                            }
+                            if($('.holder .user').length==0){
+                                $('.ol-users .holder').html('<div class="no-user">No user found online</div>');
+                            }
+                        }
+                    }
+                });
+            }
+            $(".ol-users").mCustomScrollbar({
+                theme:"light-thin",
+                scrollButtons:{
+                    enable:true
+                },
+                advanced:{
+                    updateOnContentResize: true
+                },
+                autoHideScrollbar: Boolean,
+                callbacks:{
+                    onTotalScroll:function(){
+                        console.log('Hello');
+                    },
+                    onTotalScrollBack:function(){
+                        console.log('Back');
+                    }
+                }
+            });
+            
+            $('.levels').circleMenu({
+                direction:'top', 
+                trigger:'click',
+                speed:400,
+                step_in:70,
+                step_out:60,
+                circle_radius:150,
+                open: function(){
+                    //console.log('menu opened');
+                },
+                close: function(){
+                   
+                    //                        console.log('menu closed');
+                },
+                init: function()
+                {
+                    //                        console.log('menu initialized');
+                },
+                select: function(evt,index)
+                {
+                    //                        console.log(index);
+                }
+            });
+            
+            
+            $('.vs-player').click(function(){
+                $('.users-container').toggleClass('active');
+                $('.levels').circleMenu('close');
+            });
+            
+            
+            $('.user').live('click',function(){
+                if($(this).find('.ol-status.busy').length==1){
+                    var html=$(this).data('name')+' is busy. <div class="btn-box"><button class="btn btn-no">Close</button></div>';
+                    $('.confirmation').html(html);    
+                }else if($(this).find('.ol-status.active').length==1){
+                    if($(this).data('email')!=null){
+                        var html='<div class="btn-box">'+
+                            '<button class="btn btn-yes" data-email="'+$(this).data('email')+'">Yes</button>'+
+                            '<button class="btn btn-no">No</button>'+
+                            '</div>'+
+                            'Do you want to send request to '+$(this).data('name')+'?';
+                        html+='<div>Note: Popup blocks should be disabled</div>';
+                        $('.confirmation').html(html);    
+                    }    
+                }else{
+                    var html=$(this).data('name')+' is not available. <div class="btn-box"><button class="btn btn-no">Close</button></div>';
+                    $('.confirmation').html(html);    
+                }
+                                
+                $('.confirmation').toggleClass('active');
+            });
+            $('.confirmation .btn-no').live('click',function(){
+                $('.confirmation').toggleClass('active');
+            });
+            
+            $('.confirmation .btn-yes').live('click',function(){
+
+                var email=$(this).data('email');
+                $('.confirmation').removeClass('active');
+              
+                $.ajax({
+                    url:'SendingRequestChomp',
+                    type:'post',
+                    data:{e:email},
+                    success:function(msg){
+                        if(msg.status=='s'){
+                            //alert('Please wait for player 2');
+                            var html='Please wait for player 2 <div class="btn-box"><button class="btn btn-no">Close</button></div>';
+                            $('.confirmation').html(html);   
+                            $('.confirmation').addClass('active');
+                            //                                top.location.href='Game.html';
+                            secondPlayerAcceptedTimer=setInterval(checkAccepted,5000);
+                        }else if(msg.status=='sep2'){
+                            var html=email+' is not available. <div class="btn-box"><button class="btn btn-no">Close</button></div>';
+                            $('.confirmation').html(html);   
+                            $('.confirmation').addClass('active');
+                        }else if(msg.status=='already'){
+                            var html=email+' already got your request. <div class="btn-box"><button class="btn btn-no">Close</button></div>';
+                            $('.confirmation').html(html);   
+                            $('.confirmation').addClass('active');
+                        }
+                    }
+                });
+                
+
+
+            });
+            
+            var window_support;
+            
+            var secondPlayerAcceptedTimer;
+            var Accepted=false;
+            function checkAccepted(){
+                if(Accepted){
+                    clearTimeout(secondPlayerAcceptedTimer);
+                    return false;
+                }
+                $.ajax({
+                    url:'CheckAcceptedChomp',
+                    type:'post',
+                    success:function(msg){
+                        if(msg.status=='s'){
+                            openNewWindow();
+                            clearTimeout(secondPlayerAcceptedTimer);
+                            Accepted=true;
+                            //                            top.location.href='Game.html';
+                        }
+                    }
+                });
+            }
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            var banner = new Banner();
+            banner.initialize('canvas-banner');	
+            $('#button').click(function(e){
+                // Prevents the default action to be triggered. 
+                e.preventDefault();
+
+                // Triggering bPopup when click event is fired
+                //                $('#modal_level').bPopup({
+                //                    easing: 'easeOutBounce', //uses jQuery easing plugin
+                //                    speed: 900,
+                //                    transition: 'slideDown'
+                //                });
+            });
+            
+            $('.btn_close_3d').click(function(){
+                $(this).closest('.modal').bPopup().close();
+            });
+            
+            $('#btn-info').click(function(e){
+                $('#modal_inst').bPopup({
+                    easing: 'easeOutBounce', //uses jQuery easing plugin
+                    speed: 900,
+                    transition: 'slideDown'
+                });
+            });
+            $('#btn-setting').click(function(e){
+                $('#modal_setting').bPopup({
+                    easing: 'easeOutBounce', //uses jQuery easing plugin
+                    speed: 900,
+                    transition: 'slideDown'
+                });
+            });
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+            var musiz=document.createElement('audio');
+            var effx=document.createElement('audio');
+            if(effx.canPlayType('audio/mp3')){
+                effx.src='sound/2.wav';
+            }else if(musiz.canPlayType('audio/ogg')){
+                effx.src='sound/2.ogg';
+            }
+            //            effx.setAttribute('loop','1');
+            effx.volume=1;
+                
+            $('body').append(musiz);
+            $('body').append(effx);
+            function playAudio(){
+                if(musiz.canPlayType('audio/mp3')){
+                    musiz.src='sound/1.ogg';
+                }else if(musiz.canPlayType('audio/ogg')){
+                    musiz.src='sound/1.ogg';
+                }
+                musiz.setAttribute('loop','loop');
+                musiz.volume=1;
+                musiz.play();
+            }
+            
+            function playEffect(){
+                if(effx_flag){
+                    if(effx.canPlayType('audio/mp3')){
+                        effx.src='sound/2.wav';
+                    }else if(musiz.canPlayType('audio/ogg')){
+                        effx.src='sound/2.ogg';
+                    }
+                    effx.play();
+                }
+                
+            }
+            
+            $("[data-slider]")
+            .each(function () {
+                var input = $(this);
+                $("<span>")
+                .addClass("output")
+                .insertAfter($(this));
+            })
+            .bind("slider:ready slider:changed", function (event, data) {
+                $(this)
+                .nextAll(".output:first")
+                .html(data.value.toFixed(0));
+                if($(this).hasClass('musiz')){
+                    musiz.volume=data.value.toFixed(0)/100;
+                }
+                if($(this).hasClass('sfx'))
+                {
+                    effx.volume=data.value.toFixed(0)/100;
+                }
+            });
+            
+            var effx_flag=false;
+            $('.slider-button').click(function(){
+                if($(this).hasClass('on')){
+                    $(this).closest('.rs').find('.p_con').css('display', 'none');
+                    if($(this).closest('.rs').index()==0){
+                        musiz.pause();
+                    }
+                    if($(this).closest('.rs').index()==1){
+                        effx_flag=false;
+                    }
+                    
+                    
+                    $(this).removeClass('on').html('OFF');   
+                }else{
+                    $(this).closest('.rs').find('.p_con').css({'display':'inline'});
+                    if($(this).closest('.rs').index()==0){
+                        playAudio();
+                    }
+                    if($(this).closest('.rs').index()==1){
+                        effx_flag=true;
+                    }
+                    
+                    $(this).addClass('on').html('ON');
+                }
+                
+            });
+            
+            $('.slider-button').eq(0).click();
+            $('.slider-button').eq(1).click();
+            $('audio').eq(0).on('canplay canplaythrough', function(){
+              
+            });
+            
+            
+            
+            
+            
+        </script>
+
+    </body>
+</html>
