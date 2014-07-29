@@ -399,43 +399,164 @@
         </footer>
         <script src="js/jQuery1.8.3.js"></script>
         <script>
-            $('.get-in').click(function(){
+            $('.get-in').click(function() {
                 //                $('.wrapper').addClass('blur-it');
-                
-                if($('.modal').hasClass('active')){
+
+                if ($('.modal').hasClass('active')) {
                     $('.modal').addClass('remove-modal');
                     setTimeout("$('.modal').removeClass('active');$('.modal').removeClass('remove-modal');$('.wrapper').removeClass('blur-it');", 600);
-                }else{
+                } else {
                     $('.wrapper').addClass('blur-it');
                     $('.modal').addClass('active');
                 }
-                
+
             });
-            $('.close-modal').click(function(){
+            $('.close-modal').click(function() {
                 $('.modal').addClass('remove-modal');
                 setTimeout("$('.modal').removeClass('active');$('.modal').removeClass('remove-modal');$('.wrapper').removeClass('blur-it');", 600);
             });
-            
+
             var $root = $('html, body');
             $('a.sec-link').click(function() {
                 var href = $.attr(this, 'href');
                 $root.animate({
                     scrollTop: $(href).offset().top
-                }, 500, function () {
+                }, 500, function() {
                     //                    console.log(href);
-                    window.location.hash = ' {'+href.substring(1)+'}';
-                    
+                    window.location.hash = ' {' + href.substring(1) + '}';
+
                 });
                 return false;
             });
-            
-            $(window).scroll(function(){
-                if($(this).scrollTop()<$(window).height()-300){
+
+            $(window).scroll(function() {
+                if ($(this).scrollTop() < $(window).height() - 300) {
                     $('.later').removeClass('active');
-                }else{
+                } else {
                     $('.later').addClass('active');
                 }
             });
         </script>
+        <style>
+            @media (min-width:320px) and (max-width:480px) {
+                /* smartphones, iPhone, portrait 480x320 phones */ 
+                .pretty-h1{
+                    font-size: 24px;
+                    padding-top: 20px;
+                }
+                header{
+                    min-height: 300px;
+                    text-align: center;
+                }
+                .nav{
+                    padding-right: 0px;
+                    text-align: center;
+                }
+                .nav li a{
+                    padding: 10px 8px;
+                    font-size: 15px;
+                }
+
+                .content{
+                    width: 90%;
+                }
+                .who-50{
+                    width: 100%;
+                }
+
+
+                .abt-my-wrk{
+                    font-size: 20px;
+                }
+                .w-item .browser{
+                    width: 100%;
+                }
+                .browser-top .b-address{
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+                .w-title{
+                    font-size: 24px;
+                    padding-top: 20px;
+                }
+                .w-item .w-desc{
+                    width: 100%;
+                    margin-top: 30px;
+                    text-align: left;
+                    padding-left: 0px;
+                    padding-right: 30px;
+                }
+                .w-title:before{
+                    height: 6px;
+                }
+                .w-right .w-title:before{
+                    left: 0px;
+                    right: inherit;
+                }
+                .w-desc.w-right ul{
+                    direction: ltr;
+                    padding: 0 0 0 1.5em;
+                }
+
+                .pro-img-footer{
+                    display: none;
+                }
+                .bl-right:before{
+                    display: none;
+                }
+                footer{
+                    width: 100%;
+                    padding: 10px;
+                }
+                footer .block-50{
+                    width: 100%;
+                    text-align: left;
+                    font-size: 14px;
+                }
+                footer .block-50.bl-left{
+                    /*border-bottom: 0;*/
+                }
+                .block-50 li{
+                    width: 25%;  
+                }
+                footer .block-50 a{
+                    text-align: center;
+                    padding-left:  0px;
+                    padding-right:  0px;
+                    padding: 0px;
+                    font-size: 10px;
+                }
+                .block-50 li:last-child a{
+                    padding: 0px !important;
+                }
+                .bl-right li:first-child a{
+                    padding: 0px !important;
+                }
+
+                .logo-item{
+                    width: 100%;
+                }
+                .vector-item{
+                    width: 100%;
+                }
+
+            }
+            @media (min-width:481px) { 
+                /* portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */ 
+            }
+            @media (min-width:641px) { 
+                /* portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */ 
+            }
+            @media (min-width:961px) {
+                /* tablet, landscape iPad, lo-res laptops ands desktops */ 
+
+            }
+            @media (min-width:1025px) {
+                /* big landscape tablets, laptops, and desktops */ 
+            }
+            @media (min-width:1281px) {
+                /* hi-res laptops and desktops */ 
+            }
+        </style>
     </body>
 </html>
