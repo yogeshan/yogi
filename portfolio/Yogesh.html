@@ -24,10 +24,10 @@ and open the template in the editor.
 
         <link rel="stylesheet" href="css/yogesh.css" />
         <script>
-            paceOptions={
-                ajax:false,
-                document:true,
-                eventLag:false
+            paceOptions = {
+                ajax: false,
+                document: true,
+                eventLag: false
             };
         </script>
         <script src="js/pace/pace.min.js"></script>
@@ -1532,82 +1532,286 @@ and open the template in the editor.
         <script src="js/jQuery1.8.3.js"></script>
 
         <script>
-            $('.get-in').click(function(){
+            $('.get-in').click(function() {
                 //                $('.wrapper').addClass('blur-it');
-                
-                if($('.modal').hasClass('active')){
+
+                if ($('.modal').hasClass('active')) {
                     $('.modal').addClass('remove-modal');
                     setTimeout("$('.modal').removeClass('active');$('.modal').removeClass('remove-modal');$('.wrapper').removeClass('blur-it');", 600);
-                }else{
+                } else {
                     $('.wrapper').addClass('blur-it');
                     $('.modal').addClass('active');
                 }
-                
+
             });
-            $('.close-modal').click(function(){
+            $('.close-modal').click(function() {
                 $('.modal').addClass('remove-modal');
                 setTimeout("$('.modal').removeClass('active');$('.modal').removeClass('remove-modal');$('.wrapper').removeClass('blur-it');", 600);
             });
-            
+
             var $root = $('html, body');
             $('a.sec-link').click(function() {
                 var href = $.attr(this, 'href');
                 $root.animate({
                     scrollTop: $(href).offset().top
-                }, 500, function () {
+                }, 500, function() {
                     //                    console.log(href);
-                    window.location.hash = ' {'+href.substring(1)+'}';
-                    
+                    window.location.hash = ' {' + href.substring(1) + '}';
+
                 });
                 return false;
             });
-            
-            $(window).scroll(function(){
-                if($(this).scrollTop()<$(window).height()-300){
+
+            $(window).scroll(function() {
+                if ($(this).scrollTop() < $(window).height() - 300) {
                     $('.later').removeClass('active');
-                }else{
+                } else {
                     $('.later').addClass('active');
                 }
             });
-            
-            $('.btn-send').click(function(e){
+
+            $('.btn-send').click(function(e) {
                 e.preventDefault();
                 e.stopPropagation();
-                var name=$('.txtName').val();
-                var email=$('.txtEmail').val();
-                var usermsg=$('.txtMsg').val();
-                var btn=$(this);
-                
-                
-                if(name.length<1  ){
+                var name = $('.txtName').val();
+                var email = $('.txtEmail').val();
+                var usermsg = $('.txtMsg').val();
+                var btn = $(this);
+
+
+                if (name.length < 1) {
                     alert('Please enter proper name');
                 }
-                else if(email.length<5){
+                else if (email.length < 5) {
                     alert('Please enter proper email id');
-                }else if(usermsg.length<3){
+                } else if (usermsg.length < 3) {
                     alert('Message length should be greater than 4');
-                }else{
-                    btn.attr('disabled',true);
-                    var url='http://openseesame.tcs.com/OpenIgniteGames/SavePortfolio'
+                } else {
+                    btn.attr('disabled', true);
+                    var url = 'http://openseesame.tcs.com/OpenIgniteGames/SavePortfolio'
                     $.ajax({
-                        url:url,
-                        type:'POST',
-                        data:{name:name,email:email,msg:usermsg},
-                        success:function(msg){
-                            btn.attr('disabled',false);
-                            if(msg.status=='s'){
+                        url: url,
+                        type: 'POST',
+                        data: {name: name, email: email, msg: usermsg},
+                        success: function(msg) {
+                            btn.attr('disabled', false);
+                            if (msg.status == 's') {
                                 $('.txtName').val('');
                                 $('.txtEmail').val('');
                                 $('.txtMsg').val('');
                                 alert('Message sent successfully');
-                            }else{
+                            } else {
                                 alert('Unable to send message');
                             }
                         }
-                    }); 
+                    });
                 }
-                
+
             });
         </script>
+        <style>
+            @media (min-width:320px) and (max-width:480px) {
+                /* smartphones, iPhone, portrait 480x320 phones */ 
+                header{
+                    min-height: 300px;
+                    text-align: center;
+                }
+                .nav{
+                    padding-right: 0px;
+                    text-align: center;
+                }
+                .nav li a{
+                    padding: 10px 8px;
+                    font-size: 15px;
+                }
+                .profile-pic{
+                    left: 0;
+                    width: 200px;
+                    height: 200px;
+                    position: relative;
+                    top: 16px;
+                }
+                .profile-pic-inner {
+                    width: 150px;
+                    height: 150px;
+                }
+                .h-title {
+                    font-size: 3em;
+                    color: white;
+                    margin-left: 10%;
+                    margin-right: 10%;
+                    padding-top: 50px;
+                    padding-bottom: 50px;
+                    padding-left: 0;
+                }
+                .content{
+                    width: 90%;
+                }
+                .who-50{
+                    width: 100%;
+                }
+
+                .about-me-box .block-30,.about-me-box .block-70{
+                    width: 100%;
+                    padding: 0;
+                }
+                .about-me-box .block-30 svg{
+                    height: 400px;    
+                }
+                .para{
+                    padding-left: 76px;
+                }
+                .skill-block h3{
+                    width: 70px;
+                    font-size: 20px;
+                }
+                .skill-block .skill-content{
+                    padding-left: 76px;
+                }
+                .skills span.skill{
+                    line-height: 40px;
+                    padding: 0 10px;
+                }
+                .abt-my-wrk{
+                    font-size: 20px;
+                }
+                .w-item .browser{
+                    width: 100%;
+                }
+                .browser-top .b-address{
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+                .w-title{
+                    font-size: 24px;
+                    padding-top: 20px;
+                }
+                .w-item .w-desc{
+                    width: 100%;
+                    margin-top: 30px;
+                    text-align: left;
+                    padding-left: 0px;
+                    padding-right: 30px;
+                }
+                .w-title:before{
+                    height: 6px;
+                }
+                .w-right .w-title:before{
+                    left: 0px;
+                    right: inherit;
+                }
+                .w-desc.w-right ul{
+                    direction: ltr;
+                    padding: 0 0 0 1.5em;
+                }
+                .big-btn{
+                    font-size: 20px;
+                    padding: 16px 26px;
+                    margin-top: 30px;
+                }
+                .btn-send {
+                    padding: 2px 40px 0px;
+                    font-size: 14px;
+                    border-radius: 2px;
+                    line-height: 38px;
+                    margin-top: 0px;
+                }
+
+
+
+                .steps{
+                    width: 100%;
+                }
+                .steps .step-title{
+                    font-size: 24px;
+                    padding-top: 20px;
+                }
+                .steps .step-title:before{
+                    height: 6px;
+                }
+                .steps-right .step-title:before{
+                    left: 0px;
+                    right: inherit;
+                }
+                .steps-right{
+                    text-align: left;
+                }
+                .pro-img-footer{
+                    display: none;
+                }
+                .bl-right:before{
+                    display: none;
+                }
+                footer{
+                    width: 100%;
+                    padding: 10px;
+                }
+                footer .block-50{
+                    width: 100%;
+                    text-align: left;
+                    font-size: 14px;
+                }
+                footer .block-50.bl-left{
+                    /*border-bottom: 0;*/
+                }
+                .block-50 li{
+                    width: 25%;  
+                }
+                footer .block-50 a{
+                    text-align: center;
+                    padding-left:  0px;
+                    padding-right:  0px;
+                    padding: 0px;
+                    font-size: 13px;
+                }
+                .block-50 li:last-child a{
+                    padding: 0px !important;
+                }
+                .bl-right li:first-child a{
+                    padding: 0px !important;
+                }
+
+                .modal-inner {
+                    /*                    width: 96% !important;
+                                        left: 2% !important;*/
+                }
+                .modal-inner {
+                    left: 0;
+                    margin: 0;
+                    right: 0;
+                    width: 100%;
+                    overflow: scroll;
+                }
+
+                .modal-section{
+                    position: static;
+                    top: 0;
+                    width: 100%;
+                    margin-bottom: 13px;
+                }
+                .con-row{
+                    font-size: 16px!important;
+                }
+                .con-row img{
+                    margin-right: 2px;
+                }
+            }
+            @media (min-width:481px) { 
+                /* portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */ 
+            }
+            @media (min-width:641px) { 
+                /* portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */ 
+            }
+            @media (min-width:961px) {
+                /* tablet, landscape iPad, lo-res laptops ands desktops */ 
+
+            }
+            @media (min-width:1025px) {
+                /* big landscape tablets, laptops, and desktops */ 
+            }
+            @media (min-width:1281px) {
+                /* hi-res laptops and desktops */ 
+            }
+        </style>
     </body>
 </html>
